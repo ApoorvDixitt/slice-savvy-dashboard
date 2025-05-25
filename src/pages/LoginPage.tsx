@@ -1,139 +1,227 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
+import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { useAuth } from '@/contexts/AuthContext';
-import { motion } from 'framer-motion';
-import { Pizza, ChefHat, Utensils, Store, BarChart3 } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
+import { Pizza, ChefHat, Utensils, LogIn, Loader2, AlertCircle, Chrome } from 'lucide-react';
 
 const LoginPage: React.FC = () => {
-  const { login } = useAuth();
-  const [isLoading, setIsLoading] = useState(false);
+  const { login, isLoading: loading, user } = useAuth();
+  const navigate = useNavigate();
+  const [showError, setShowError] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsLoading(true);
-    setError(null);
-    
+  useEffect(() => {
+    if (user) {
+      navigate('/');
+    }
+  }, [user, navigate]);
+
+  const handleLogin = async () => {
     try {
-      // Simulate API call
-      await new Promise(resolve => setTimeout(resolve, 1000));
-      // Handle login logic here
+      await login();
     } catch (err) {
-      setError('Invalid credentials. Please try again.');
-    } finally {
-      setIsLoading(false);
+      setError(err instanceof Error ? err.message : 'Failed to login');
+      setShowError(true);
+      const timer = setTimeout(() => {
+        setShowError(false);
+      }, 5000);
+      return () => clearTimeout(timer);
     }
   };
 
-  return (
-    <div className="min-h-screen bg-gradient-to-br from-orange-50 to-orange-100 dark:from-gray-900 dark:to-gray-800">
-      <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center min-h-[calc(100vh-4rem)]">
-          {/* Left Side: Welcome Message */}
-          <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
-            className="flex flex-col justify-center text-center lg:text-left"
-          >
-            <div className="space-y-6 sm:space-y-8">
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.3, duration: 0.8 }}
-                className="flex items-center justify-center lg:justify-start space-x-4"
-              >
-                <motion.div
-                  animate={{
-                    rotate: [0, 10, 0],
-                  }}
-                  transition={{
-                    duration: 2,
-                    repeat: Infinity,
-                    ease: "easeInOut"
-                  }}
-                  className="relative"
-                >
-                  <Store className="w-12 h-12 sm:w-16 sm:h-16 text-orange-500" />
-                  <Utensils className="w-6 h-6 sm:w-8 sm:h-8 text-orange-600 absolute -bottom-2 -right-2" />
-                </motion.div>
-                <h1 className="text-4xl sm:text-5xl font-bold text-orange-700 dark:text-orange-500">Slice Savvy</h1>
-              </motion.div>
-              <motion.p
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.5, duration: 0.8 }}
-                className="text-lg sm:text-xl text-gray-600 dark:text-gray-300"
-              >
-                Your all-in-one pizza business management solution
-              </motion.p>
-            </div>
-          </motion.div>
+  // Animation variants
+  const pageVariants = {
+    initial: { opacity: 0, y: 20 },
+    in: { opacity: 1, y: 0 },
+    out: { opacity: 0, y: -20 },
+  };
 
-          {/* Right Side: Login Form */}
+  const floatingPizzaVariants = {
+    float: (i: number) => ({
+      y: [0, -10, 0, 10, 0],
+      x: [0, Math.random() * 10 - 5, 0, Math.random() * 10 - 5, 0],
+      rotate: [0, i % 2 === 0 ? 5 : -5, 0],
+      transition: {
+        duration: Math.random() * 2 + 3, // 3-5 seconds
+        repeat: Infinity,
+        ease: 'easeInOut',
+        delay: i * 0.3,
+      },
+    }),
+  };
+
+  const spinningElementVariants = {
+    spin: {
+      rotate: 360,
+      transition: {
+        duration: 15,
+        repeat: Infinity,
+        ease: 'linear',
+      },
+    },
+  };
+
+  const mainPizzaIconVariants = {
+    animate: {
+      scale: [1, 1.05, 1],
+      rotate: [0, 2, -2, 0],
+      transition: {
+        duration: 3,
+        repeat: Infinity,
+        ease: 'easeInOut',
+      },
+    },
+  };
+
+  const googleButtonVariants = {
+    hover: {
+      scale: 1.05,
+      boxShadow: '0px 0px 15px rgba(255, 165, 0, 0.7)',
+      transition: { duration: 0.3 },
+    },
+    tap: { scale: 0.95 },
+  };
+
+  // Use React.useMemo to prevent recalculation on every render
+  const floatingPizzas = React.useMemo(() => {
+    return Array.from({ length: 5 }).map((_, i) => ({
+      id: i,
+      size: Math.random() * 30 + 20, // 20px to 50px
+      top: `${Math.random() * 80 + 10}%`, // 10% to 90% from top
+      left: `${Math.random() * 80 + 10}%`, // 10% to 90% from left
+      delay: Math.random() * 2,
+    }));
+  }, []);
+
+  return (
+    <motion.div
+      initial="initial"
+      animate="in"
+      exit="out"
+      variants={pageVariants}
+      transition={{ duration: 0.5 }}
+      className="min-h-screen bg-gradient-to-br from-gray-100 to-gray-300 flex flex-col items-center justify-center p-4 overflow-hidden relative"
+      aria-label="Login page container"
+      role="main"
+    >
+      {/* Floating Pizzas Background */}
+      {floatingPizzas.map((pizza, i) => (
+        <motion.div
+          key={pizza.id}
+          custom={i}
+          variants={floatingPizzaVariants}
+          animate="float"
+          className="absolute text-orange-500 opacity-20"
+          style={{
+            top: pizza.top,
+            left: pizza.left,
+            fontSize: `${pizza.size}px`,
+          }}
+        >
+          <Pizza size={pizza.size} />
+        </motion.div>
+      ))}
+
+      {/* Spinning Decorative Elements */}
+      {[...Array(3)].map((_, i) => (
+        <motion.div
+          key={`spin-${i}`}
+          variants={spinningElementVariants}
+          animate="spin"
+          className="absolute border-2 border-orange-400 border-dashed rounded-full opacity-10"
+          style={{
+            width: `${100 + i * 100}px`,
+            height: `${100 + i * 100}px`,
+            top: `${20 + i * 10}%`,
+            left: `${20 + i * 10}%`,
+          }}
+        />
+      ))}
+
+      <motion.div
+        className="relative z-10 bg-white/80 backdrop-blur-md shadow-2xl rounded-xl p-8 md:p-12 w-full max-w-md text-center transform transition-all duration-500 hover:scale-105"
+      >
+        <motion.div
+          variants={mainPizzaIconVariants}
+          animate="animate"
+          className="relative mx-auto mb-6 w-32 h-32 md:w-40 md:h-40 flex items-center justify-center"
+        >
+          <Pizza
+            className="absolute text-orange-500 filter drop-shadow-lg"
+            size={100}
+          />
+          <ChefHat
+            className="absolute text-gray-700 transform -rotate-12 -translate-x-8 -translate-y-4 filter drop-shadow-md"
+            size={40}
+          />
+          <Utensils
+            className="absolute text-gray-700 transform rotate-12 translate-x-8 -translate-y-4 filter drop-shadow-md"
+            size={40}
+          />
+          {/* Pulsing Glow */}
+          <div className="absolute w-full h-full bg-orange-400 rounded-full opacity-30 animate-pulse filter blur-xl"></div>
+        </motion.div>
+
+        <motion.h1
+          className="text-4xl md:text-5xl font-bold text-gray-800 mb-3 tracking-tight"
+          initial={{ y: -20, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ delay: 0.2, type: 'spring', stiffness: 120 }}
+        >
+          WELCOME <span className="text-orange-500">ADMIN</span>
+        </motion.h1>
+        <motion.p
+          className="text-gray-600 mb-8 text-sm md:text-base"
+          initial={{ y: -20, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ delay: 0.4, type: 'spring', stiffness: 120 }}
+        >
+          Sign in to manage your Slice Savvy Dashboard.
+        </motion.p>
+
+        {showError && error && (
           <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
-            className="flex justify-center"
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            className="bg-red-100 border-l-4 border-red-500 text-red-700 p-4 mb-6 rounded-md flex items-center shadow-md"
+            role="alert"
           >
-            <div className="w-full max-w-md">
-              <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-6 sm:p-8">
-                <h2 className="text-2xl sm:text-3xl font-bold text-center text-gray-900 dark:text-white mb-6">
-                  Welcome Back
-                </h2>
-                <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
-                  <div>
-                    <label htmlFor="email" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
-                      Email
-                    </label>
-                    <input
-                      id="email"
-                      type="email"
-                      required
-                      className="w-full px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-colors"
-                      placeholder="Enter your email"
-                    />
-                  </div>
-                  <div>
-                    <label htmlFor="password" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
-                      Password
-                    </label>
-                    <input
-                      id="password"
-                      type="password"
-                      required
-                      className="w-full px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-colors"
-                      placeholder="Enter your password"
-                    />
-                  </div>
-                  {error && (
-                    <div className="text-red-500 text-sm text-center">{error}</div>
-                  )}
-                  <button
-                    type="submit"
-                    disabled={isLoading}
-                    className="w-full py-2 px-4 rounded-lg bg-orange-500 hover:bg-orange-600 text-white font-medium transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center"
-                  >
-                    {isLoading ? (
-                      <>
-                        <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                          <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                          <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                        </svg>
-                        Signing in...
-                      </>
-                    ) : (
-                      'Sign in'
-                    )}
-                  </button>
-                </form>
-              </div>
-            </div>
+            <AlertCircle className="h-5 w-5 mr-3" />
+            <p className="font-medium">{error}</p>
           </motion.div>
-        </div>
-      </div>
-    </div>
+        )}
+
+        <motion.div variants={googleButtonVariants} whileHover="hover" whileTap="tap">
+          <Button
+            onClick={handleLogin}
+            disabled={loading}
+            className="w-full bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-600 hover:to-amber-600 text-white font-semibold py-3 px-6 rounded-lg shadow-lg hover:shadow-xl transform transition-all duration-300 ease-in-out focus:outline-none focus:ring-2 focus:ring-orange-400 focus:ring-opacity-75 text-lg flex items-center justify-center space-x-2"
+            aria-label="Sign in with Google"
+          >
+            {loading ? (
+              <Loader2 className="h-6 w-6 animate-spin" />
+            ) : (
+              <>
+                <Chrome className="h-5 w-5" />
+                <span>Sign In with Google</span>
+                <LogIn className="h-5 w-5" />
+              </>
+            )}
+          </Button>
+        </motion.div>
+
+        <motion.p
+          className="mt-8 text-xs text-gray-500"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.8 }}
+        >
+          &copy; {new Date().getFullYear()} Slice Savvy. All rights reserved.
+        </motion.p>
+      </motion.div>
+    </motion.div>
   );
 };
 
