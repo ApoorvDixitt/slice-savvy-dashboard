@@ -1,20 +1,25 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Badge } from '@/components/ui/badge';
 import { Avatar, AvatarFallback } from '@/components/ui/avatar';
 import mockData from '@/data/mockData.json';
-import { Users, LayoutDashboard, PieChart } from 'lucide-react';
+import { Users, LayoutDashboard, PieChart, Search, Loader2 } from 'lucide-react';
 import NewsletterTemplate from '@/components/NewsletterTemplate';
+import { useDebounce } from '@/hooks/useDebounce';
 
 const CustomersPage: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [activeTab, setActiveTab] = useState('Customer List');
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedCustomers, setSelectedCustomers] = useState<string[]>([]);
-  const [modalSearchTerm, setModalSearchTerm] = useState(''); // State for search within modal
-  const [sortByOrders, setSortByOrders] = useState<'none' | 'asc' | 'desc'>('none'); // State for sorting
+  const [modalSearchTerm, setModalSearchTerm] = useState('');
+  const [sortByOrders, setSortByOrders] = useState<'none' | 'asc' | 'desc'>('none');
+  const [isLoading, setIsLoading] = useState(false);
+  
+  const debouncedSearchTerm = useDebounce(searchTerm, 300);
+  const debouncedModalSearchTerm = useDebounce(modalSearchTerm, 300);
   
   const { customers } = mockData;
 
@@ -25,16 +30,24 @@ const CustomersPage: React.FC = () => {
     } else {
       document.body.classList.remove('overflow-hidden');
     }
-    // Cleanup function to remove class when component unmounts
     return () => {
       document.body.classList.remove('overflow-hidden');
     };
   }, [isModalOpen]);
 
+  // Simulate loading state when searching
+  useEffect(() => {
+    setIsLoading(true);
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 300);
+    return () => clearTimeout(timer);
+  }, [debouncedSearchTerm, debouncedModalSearchTerm]);
+
   const filteredCustomers = customers.filter(customer =>
-    customer.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    customer.email.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    customer.phone.includes(searchTerm)
+    customer.name.toLowerCase().includes(debouncedSearchTerm.toLowerCase()) ||
+    customer.email.toLowerCase().includes(debouncedSearchTerm.toLowerCase()) ||
+    customer.phone.includes(debouncedSearchTerm)
   );
 
   const getTierColor = (tier: string) => {
@@ -81,8 +94,8 @@ const CustomersPage: React.FC = () => {
 
   // Filter and sort customers for the modal
   const modalFilteredCustomers = customers.filter(customer =>
-    customer.name.toLowerCase().includes(modalSearchTerm.toLowerCase()) ||
-    customer.email.toLowerCase().includes(modalSearchTerm.toLowerCase())
+    customer.name.toLowerCase().includes(debouncedModalSearchTerm.toLowerCase()) ||
+    customer.email.toLowerCase().includes(debouncedModalSearchTerm.toLowerCase())
   ).sort((a, b) => {
     if (sortByOrders === 'asc') {
       return a.totalOrders - b.totalOrders;
@@ -96,21 +109,35 @@ const CustomersPage: React.FC = () => {
   return (
     <div className="space-y-6">
       {/* Header */}
-      <div className="flex justify-between items-start">
+      <div className="flex flex-col sm:flex-row justify-between items-start gap-4">
         <div>
           <h1 className="text-2xl font-bold text-gray-900 dark:text-white">Customer Management</h1>
           <p className="text-gray-600 dark:text-gray-400">Manage customer relationships and track loyalty</p>
         </div>
-        <Button 
-          className="bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600"
-          onClick={() => setIsModalOpen(true)}
-        >
-          Send Newsletter
-        </Button>
+        <div className="flex flex-col sm:flex-row gap-2 w-full sm:w-auto">
+          <div className="relative flex-1 sm:flex-none">
+            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4" />
+            <Input
+              placeholder="Search customers..."
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              className="pl-9 w-full sm:w-[250px]"
+            />
+            {isLoading && (
+              <Loader2 className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4 animate-spin" />
+            )}
+          </div>
+          <Button 
+            className="bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 w-full sm:w-auto"
+            onClick={() => setIsModalOpen(true)}
+          >
+            Send Newsletter
+          </Button>
+        </div>
       </div>
 
       {/* Summary Stats */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
         <Card className="border-blue-200 hover:shadow-lg transition-shadow hover:scale-[1.01] transition-transform duration-200 ease-in-out hover:bg-gray-50 dark:hover:bg-gray-800">
           <CardContent className="p-6">
             <div className="flex items-center justify-between">
@@ -173,47 +200,47 @@ const CustomersPage: React.FC = () => {
       </div>
 
       {/* Customer Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
         {filteredCustomers.map((customer) => (
           <Card key={customer.id} className="hover:shadow-lg transition-shadow hover:scale-[1.01] transition-transform duration-200 ease-in-out hover:bg-gray-50 dark:hover:bg-gray-800">
-            <CardContent className="p-6">
-              <div className="flex items-start justify-between mb-4">
+            <CardContent className="p-4 sm:p-6">
+              <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-3 mb-4">
                 <div className="flex items-center space-x-3">
-                  <Avatar className="w-12 h-12">
+                  <Avatar className="w-10 h-10 sm:w-12 sm:h-12">
                     <AvatarFallback className="bg-gradient-to-r from-orange-400 to-red-500 text-white">
                       {customer.name.split(' ').map(n => n[0]).join('')}
                     </AvatarFallback>
                   </Avatar>
-                  <div>
-                    <h3 className="font-semibold text-gray-900 dark:text-white">{customer.name}</h3>
-                    <p className="text-sm text-gray-600 dark:text-gray-400">{customer.email}</p>
+                  <div className="min-w-0">
+                    <h3 className="font-semibold text-gray-900 dark:text-white truncate">{customer.name}</h3>
+                    <p className="text-sm text-gray-600 dark:text-gray-400 truncate">{customer.email}</p>
                   </div>
                 </div>
-                <Badge className={getTierColor(customer.membershipTier)}>
+                <Badge className={`${getTierColor(customer.membershipTier)} whitespace-nowrap`}>
                   {customer.membershipTier}
                 </Badge>
               </div>
 
-              <div className="space-y-2 text-sm">
-                <div className="flex justify-between">
-                  <span className="text-gray-600 dark:text-gray-400">Phone:</span>
-                  <span className="font-medium">{customer.phone}</span>
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-4 text-sm">
+                <div className="flex flex-col">
+                  <span className="text-gray-600 dark:text-gray-400 text-xs">Phone</span>
+                  <span className="font-medium truncate">{customer.phone}</span>
                 </div>
-                <div className="flex justify-between">
-                  <span className="text-gray-600 dark:text-gray-400">Total Orders:</span>
+                <div className="flex flex-col">
+                  <span className="text-gray-600 dark:text-gray-400 text-xs">Total Orders</span>
                   <span className="font-medium">{customer.totalOrders}</span>
                 </div>
-                <div className="flex justify-between">
-                  <span className="text-gray-600 dark:text-gray-400">Revenue:</span>
+                <div className="flex flex-col">
+                  <span className="text-gray-600 dark:text-gray-400 text-xs">Revenue</span>
                   <span className="font-medium text-green-600">${customer.totalRevenue}</span>
                 </div>
-                <div className="flex justify-between">
-                  <span className="text-gray-600 dark:text-gray-400">Loyalty Points:</span>
+                <div className="flex flex-col">
+                  <span className="text-gray-600 dark:text-gray-400 text-xs">Loyalty Points</span>
                   <span className="font-medium text-orange-600">{customer.loyaltyPoints} pts</span>
                 </div>
               </div>
 
-              <div className="mt-4 pt-4 border-t border-gray-200 dark:border-gray-700">
+              <div className="mt-4 pt-3 border-t border-gray-200 dark:border-gray-700">
                 <p className="text-xs text-gray-500">
                   Last order: {new Date(customer.lastOrderDate).toLocaleDateString()}
                 </p>
@@ -225,11 +252,11 @@ const CustomersPage: React.FC = () => {
 
       {/* Customer Selection Modal */}
       {isModalOpen && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-          <div className="bg-white dark:bg-gray-900 flex flex-col rounded-lg shadow-xl w-full max-w-md max-h-[80vh]">
-            <div className="p-6 pb-4">
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+          <div className="bg-white dark:bg-gray-900 flex flex-col rounded-lg shadow-xl w-full max-w-md max-h-[90vh] sm:max-h-[80vh]">
+            <div className="p-4 sm:p-6 pb-2 sm:pb-4">
               <h2 className="text-xl font-bold mb-4">Select Customers for Newsletter</h2>
-              <div className="flex items-center space-x-2">
+              <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2">
                 <Input
                   placeholder="Search customers..."
                   value={modalSearchTerm}
@@ -239,7 +266,7 @@ const CustomersPage: React.FC = () => {
                 <select
                   value={sortByOrders}
                   onChange={(e) => setSortByOrders(e.target.value as 'none' | 'asc' | 'desc')}
-                  className="border rounded-md p-2"
+                  className="border rounded-md p-2 bg-white dark:bg-gray-800"
                 >
                   <option value="none">Sort By Orders</option>
                   <option value="asc">Orders: Low to High</option>
@@ -247,10 +274,10 @@ const CustomersPage: React.FC = () => {
                 </select>
               </div>
             </div>
-            <div className="space-y-2 px-6 overflow-y-auto flex-grow text-gray-800 dark:text-gray-200">
+            <div className="space-y-2 px-4 sm:px-6 overflow-y-auto flex-grow text-gray-800 dark:text-gray-200">
               {modalFilteredCustomers.map(customer => (
                 <div key={customer.id} className="flex items-center justify-between hover:bg-gray-100 dark:hover:bg-gray-800 p-2 rounded-md transition-colors duration-150 ease-in-out">
-                  <label htmlFor={`customer-${customer.id}`} className="flex items-center space-x-2 cursor-pointer flex-1">
+                  <label htmlFor={`customer-${customer.id}`} className="flex items-center space-x-2 cursor-pointer flex-1 min-w-0">
                     <input
                       type="checkbox"
                       id={`customer-${customer.id}`}
@@ -258,14 +285,16 @@ const CustomersPage: React.FC = () => {
                       onChange={() => handleCustomerSelect(customer.id)}
                       className="form-checkbox"
                     />
-                    <span>{customer.name} ({customer.email}) - Orders: {customer.totalOrders}</span>
+                    <span className="truncate">{customer.name} ({customer.email}) - Orders: {customer.totalOrders}</span>
                   </label>
                 </div>
               ))}
             </div>
-            <div className="flex justify-end space-x-4 p-6 pt-4 border-t border-gray-200 dark:border-gray-700">
-              <Button variant="outline" onClick={() => setIsModalOpen(false)}>Cancel</Button>
-              <Button onClick={handleSendNewsletter} disabled={selectedCustomers.length === 0}>Send Newsletter ({selectedCustomers.length})</Button>
+            <div className="flex flex-col sm:flex-row justify-end gap-2 sm:gap-4 p-4 sm:p-6 pt-2 sm:pt-4 border-t border-gray-200 dark:border-gray-700">
+              <Button variant="outline" onClick={() => setIsModalOpen(false)} className="w-full sm:w-auto">Cancel</Button>
+              <Button onClick={handleSendNewsletter} disabled={selectedCustomers.length === 0} className="w-full sm:w-auto">
+                Send Newsletter ({selectedCustomers.length})
+              </Button>
             </div>
           </div>
         </div>
