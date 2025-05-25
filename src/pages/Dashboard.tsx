@@ -62,7 +62,7 @@ const Dashboard: React.FC = () => {
     <div className="space-y-6">
       {/* Welcome Section */}
       <div className="bg-gradient-to-r from-orange-300 via-orange-400 to-red-400 rounded-lg p-4 text-white shadow-md">
-        <div className="flex items-center justify-between">
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
           <div className="flex items-center space-x-3">
             <motion.div
               animate={{ rotate: [0, 10, 0] }}
@@ -74,11 +74,11 @@ const Dashboard: React.FC = () => {
               <h1 className="text-xl font-bold">
                 {user?.user_metadata?.full_name || user?.email?.split('@')[0] || 'Chef'}
               </h1>
-              <div className="flex items-center space-x-2">
+              <div className="flex flex-wrap items-center gap-2">
                 <p className="text-sm text-orange-50">
                   {getGreeting()}
                 </p>
-                <span className="text-orange-200">•</span>
+                <span className="text-orange-200 hidden sm:inline">•</span>
                 <p className="text-sm text-orange-50">
                   {getMotivation()}
                 </p>
@@ -86,7 +86,7 @@ const Dashboard: React.FC = () => {
             </div>
           </div>
           
-          <div className="flex items-center space-x-4 text-right">
+          <div className="flex items-center justify-between sm:justify-end space-x-4 text-right">
             <div className="flex items-center space-x-2">
               <Clock className="w-4 h-4 text-orange-50" />
               <span className="text-sm font-medium">
@@ -97,7 +97,7 @@ const Dashboard: React.FC = () => {
                 })}
               </span>
             </div>
-            <div className="h-8 w-px bg-orange-200/30" />
+            <div className="h-8 w-px bg-orange-200/30 hidden sm:block" />
             <div className="text-sm text-orange-50">
               {currentTime.toLocaleDateString('en-US', { 
                 weekday: 'short',
@@ -110,74 +110,74 @@ const Dashboard: React.FC = () => {
       </div>
 
       {/* Key Metrics */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
         <Card className="border-blue-200 hover:shadow-lg transition-shadow">
-          <CardContent className="p-6">
+          <CardContent className="p-4 sm:p-6">
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-sm text-gray-600 mb-1">Total Orders</p>
-                <p className="text-2xl font-bold text-blue-600">{totalOrders}</p>
+                <p className="text-xl sm:text-2xl font-bold text-blue-600">{totalOrders}</p>
                 <p className="text-xs text-green-600">+{analytics.ordersGrowth}%</p>
               </div>
-              <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
-                <PieChart className="w-6 h-6 text-blue-600" />
+              <div className="w-10 h-10 sm:w-12 sm:h-12 bg-blue-100 rounded-lg flex items-center justify-center">
+                <PieChart className="w-5 h-5 sm:w-6 sm:h-6 text-blue-600" />
               </div>
             </div>
           </CardContent>
         </Card>
 
         <Card className="border-green-200 hover:shadow-lg transition-shadow">
-          <CardContent className="p-6">
+          <CardContent className="p-4 sm:p-6">
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-sm text-gray-600 mb-1">Active Customers</p>
-                <p className="text-2xl font-bold text-green-600">{activeCustomers}</p>
+                <p className="text-xl sm:text-2xl font-bold text-green-600">{activeCustomers}</p>
                 <p className="text-xs text-green-600">+{analytics.customersGrowth}%</p>
               </div>
-              <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center">
-                <Users className="w-6 h-6 text-green-600" />
+              <div className="w-10 h-10 sm:w-12 sm:h-12 bg-green-100 rounded-lg flex items-center justify-center">
+                <Users className="w-5 h-5 sm:w-6 sm:h-6 text-green-600" />
               </div>
             </div>
           </CardContent>
         </Card>
 
         <Card className="border-orange-200 hover:shadow-lg transition-shadow">
-          <CardContent className="p-6">
+          <CardContent className="p-4 sm:p-6">
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-sm text-gray-600 mb-1">Revenue Today</p>
-                <p className="text-2xl font-bold text-orange-600">${todayRevenue.toFixed(2)}</p>
+                <p className="text-xl sm:text-2xl font-bold text-orange-600">${todayRevenue.toFixed(2)}</p>
                 <p className="text-xs text-green-600">+{analytics.revenueGrowth}%</p>
               </div>
-              <div className="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center">
-                <LayoutDashboard className="w-6 h-6 text-orange-600" />
+              <div className="w-10 h-10 sm:w-12 sm:h-12 bg-orange-100 rounded-lg flex items-center justify-center">
+                <LayoutDashboard className="w-5 h-5 sm:w-6 sm:h-6 text-orange-600" />
               </div>
             </div>
           </CardContent>
         </Card>
 
         <Card className="border-purple-200 hover:shadow-lg transition-shadow">
-          <CardContent className="p-6">
+          <CardContent className="p-4 sm:p-6">
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-sm text-gray-600 mb-1">Avg Order Value</p>
-                <p className="text-2xl font-bold text-purple-600">${analytics.avgOrderValue.toFixed(2)}</p>
+                <p className="text-xl sm:text-2xl font-bold text-purple-600">${analytics.avgOrderValue.toFixed(2)}</p>
                 <p className="text-xs text-green-600">+{analytics.avgOrderValueGrowth}%</p>
               </div>
-              <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center">
-                <PieChart className="w-6 h-6 text-purple-600" />
+              <div className="w-10 h-10 sm:w-12 sm:h-12 bg-purple-100 rounded-lg flex items-center justify-center">
+                <PieChart className="w-5 h-5 sm:w-6 sm:h-6 text-purple-600" />
               </div>
             </div>
           </CardContent>
         </Card>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-6">
         {/* Recent Orders */}
         <Card className="lg:col-span-2">
-          <CardHeader className="flex flex-row items-center justify-between">
-            <CardTitle className="flex items-center space-x-2">
-              <PieChart className="w-5 h-5 text-orange-500" />
+          <CardHeader className="flex flex-row items-center justify-between p-4 sm:p-6">
+            <CardTitle className="flex items-center space-x-2 text-base sm:text-lg">
+              <PieChart className="w-4 h-4 sm:w-5 sm:h-5 text-orange-500" />
               <span>Recent Orders</span>
             </CardTitle>
             <Button 
@@ -189,15 +189,15 @@ const Dashboard: React.FC = () => {
               View All
             </Button>
           </CardHeader>
-          <CardContent>
-            <div className="space-y-4 max-h-[500px] overflow-y-auto pr-2 custom-scrollbar">
+          <CardContent className="p-4 sm:p-6">
+            <div className="space-y-3 sm:space-y-4 max-h-[400px] sm:max-h-[500px] overflow-y-auto pr-2 custom-scrollbar">
               {recentOrders.map((order) => (
                 <motion.div
                   key={order.orderId}
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.2 }}
-                  className="flex items-center justify-between p-3 bg-gray-50 dark:bg-gray-800 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
+                  className="flex flex-col sm:flex-row sm:items-center justify-between p-3 bg-gray-50 dark:bg-gray-800 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors gap-2 sm:gap-0"
                 >
                   <div>
                     <p className="font-medium">{order.orderId}</p>
@@ -206,7 +206,7 @@ const Dashboard: React.FC = () => {
                       {new Date(order.orderDate).toLocaleTimeString()} ago
                     </p>
                   </div>
-                  <div className="text-right">
+                  <div className="text-left sm:text-right">
                     <span className={`px-2 py-1 rounded-full text-xs font-medium ${
                       order.status === 'Preparing' ? 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200' :
                       order.status === 'Delivered' ? 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200' :
@@ -224,14 +224,14 @@ const Dashboard: React.FC = () => {
         </Card>
 
         {/* Quick Actions & Performance */}
-        <div className="space-y-6">
+        <div className="space-y-4 sm:space-y-6">
           {/* Quick Actions */}
           <Card>
-            <CardHeader>
-              <CardTitle>Quick Actions</CardTitle>
+            <CardHeader className="p-4 sm:p-6">
+              <CardTitle className="text-base sm:text-lg">Quick Actions</CardTitle>
             </CardHeader>
-            <CardContent>
-              <div className="space-y-3">
+            <CardContent className="p-4 sm:p-6">
+              <div className="space-y-2 sm:space-y-3">
                 {quickActions.map((action, index) => {
                   const Icon = action.icon;
                   return (
@@ -249,7 +249,7 @@ const Dashboard: React.FC = () => {
                         <div className={`w-8 h-8 ${action.color} rounded-lg flex items-center justify-center mr-3 transition-transform duration-200 group-hover:scale-110`}>
                           <Icon className="w-4 h-4 text-white" />
                         </div>
-                        {action.name}
+                        <span className="text-sm sm:text-base">{action.name}</span>
                       </Button>
                     </motion.div>
                   );

@@ -163,36 +163,38 @@ const MenuPage: React.FC = () => {
       </div>
 
       {/* Menu Items Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
         {filteredItems.map((item) => (
-          <Card key={item.id} className="hover:shadow-lg transition-shadow">
-            <CardHeader>
-              <div className="flex justify-between items-start">
-                <div>
-                  <CardTitle className="text-lg">{item.name}</CardTitle>
-                  <Badge variant="outline" className="mt-1">{item.category}</Badge>
-                  {item.isPopular && (
-                    <Badge className="ml-2 bg-orange-100 text-orange-800">Popular</Badge>
-                  )}
+          <Card key={item.id} className="hover:shadow-lg transition-shadow flex flex-col h-full">
+            <CardHeader className="flex-none">
+              <div className="flex justify-between items-start gap-2">
+                <div className="min-w-0 flex-1">
+                  <CardTitle className="text-lg truncate">{item.name}</CardTitle>
+                  <div className="flex flex-wrap gap-1 mt-1">
+                    <Badge variant="outline" className="whitespace-nowrap">{item.category}</Badge>
+                    {item.isPopular && (
+                      <Badge className="bg-orange-100 text-orange-800 whitespace-nowrap">Popular</Badge>
+                    )}
+                  </div>
                 </div>
-                <p className="text-2xl font-bold text-orange-600">${item.price}</p>
+                <p className="text-2xl font-bold text-orange-600 whitespace-nowrap">${item.price}</p>
               </div>
             </CardHeader>
-            <CardContent className="space-y-4">
-              <p className="text-gray-600 dark:text-gray-400 text-sm">{item.description}</p>
+            <CardContent className="flex flex-col flex-1 space-y-4">
+              <p className="text-gray-600 dark:text-gray-400 text-sm line-clamp-2">{item.description}</p>
               
-              <div>
+              <div className="flex-1">
                 <p className="text-sm font-medium text-gray-900 dark:text-white mb-2">INGREDIENTS</p>
                 <div className="flex flex-wrap gap-1">
                   {item.ingredients.map((ingredient, index) => (
-                    <Badge key={index} variant="secondary" className="text-xs">
+                    <Badge key={index} variant="secondary" className="text-xs whitespace-nowrap">
                       {ingredient}
                     </Badge>
                   ))}
                 </div>
               </div>
               
-              <div className="flex gap-2 pt-2">
+              <div className="flex gap-2 pt-2 mt-auto">
                 <Button 
                   variant="outline" 
                   size="sm" 

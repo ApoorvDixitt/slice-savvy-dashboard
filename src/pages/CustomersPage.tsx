@@ -202,29 +202,29 @@ const CustomersPage: React.FC = () => {
       {/* Customer Cards */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
         {filteredCustomers.map((customer) => (
-          <Card key={customer.id} className="hover:shadow-lg transition-shadow hover:scale-[1.01] transition-transform duration-200 ease-in-out hover:bg-gray-50 dark:hover:bg-gray-800">
-            <CardContent className="p-4 sm:p-6">
+          <Card key={customer.id} className="hover:shadow-lg transition-shadow hover:scale-[1.01] transition-transform duration-200 ease-in-out hover:bg-gray-50 dark:hover:bg-gray-800 flex flex-col h-full">
+            <CardContent className="p-4 sm:p-6 flex flex-col h-full">
               <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-3 mb-4">
-                <div className="flex items-center space-x-3">
-                  <Avatar className="w-10 h-10 sm:w-12 sm:h-12">
+                <div className="flex items-center space-x-3 min-w-0">
+                  <Avatar className="w-10 h-10 sm:w-12 sm:h-12 flex-shrink-0">
                     <AvatarFallback className="bg-gradient-to-r from-orange-400 to-red-500 text-white">
                       {customer.name.split(' ').map(n => n[0]).join('')}
                     </AvatarFallback>
                   </Avatar>
-                  <div className="min-w-0">
+                  <div className="min-w-0 flex-1">
                     <h3 className="font-semibold text-gray-900 dark:text-white truncate">{customer.name}</h3>
                     <p className="text-sm text-gray-600 dark:text-gray-400 truncate">{customer.email}</p>
                   </div>
                 </div>
-                <Badge className={`${getTierColor(customer.membershipTier)} whitespace-nowrap`}>
+                <Badge className={`${getTierColor(customer.membershipTier)} whitespace-nowrap flex-shrink-0`}>
                   {customer.membershipTier}
                 </Badge>
               </div>
 
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-4 text-sm">
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-4 text-sm flex-1">
                 <div className="flex flex-col">
                   <span className="text-gray-600 dark:text-gray-400 text-xs">Phone</span>
-                  <span className="font-medium truncate">{customer.phone}</span>
+                  <span className="font-medium truncate" title={customer.phone}>{customer.phone}</span>
                 </div>
                 <div className="flex flex-col">
                   <span className="text-gray-600 dark:text-gray-400 text-xs">Total Orders</span>
@@ -232,7 +232,9 @@ const CustomersPage: React.FC = () => {
                 </div>
                 <div className="flex flex-col">
                   <span className="text-gray-600 dark:text-gray-400 text-xs">Revenue</span>
-                  <span className="font-medium text-green-600">${customer.totalRevenue}</span>
+                  <span className="font-medium text-green-600 truncate" title={`$${customer.totalRevenue}`}>
+                    ${customer.totalRevenue}
+                  </span>
                 </div>
                 <div className="flex flex-col">
                   <span className="text-gray-600 dark:text-gray-400 text-xs">Loyalty Points</span>

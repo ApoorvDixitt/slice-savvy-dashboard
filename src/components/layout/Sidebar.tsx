@@ -60,7 +60,8 @@ const Sidebar: React.FC<SidebarProps> = ({
     <motion.div
       className={cn(
         "fixed top-0 left-0 h-screen bg-white dark:bg-gray-900 border-r border-gray-200 dark:border-gray-700 flex flex-col z-30",
-        isCollapsed ? "w-16" : "w-64"
+        isCollapsed ? "w-16" : "w-64",
+        "md:relative" // Make sidebar relative on desktop
       )}
       initial={false}
       animate={{
@@ -88,7 +89,7 @@ const Sidebar: React.FC<SidebarProps> = ({
                 <div className="w-8 h-8 bg-gradient-to-r from-orange-400 to-red-500 rounded-lg flex items-center justify-center">
                   <Pizza className="w-5 h-5 text-white" />
                 </div>
-                <span className="font-bold text-xl text-gray-800 dark:text-white">
+                <span className="font-bold text-xl text-gray-800 dark:text-white hidden md:inline">
                   Pizza Dashboard
                 </span>
               </motion.div>
@@ -98,7 +99,7 @@ const Sidebar: React.FC<SidebarProps> = ({
             variant="ghost"
             size="icon"
             onClick={onToggle}
-            className="h-8 w-8 p-0 hover:bg-gray-100 dark:hover:bg-gray-800"
+            className="h-8 w-8 p-0 hover:bg-gray-100 dark:hover:bg-gray-800 hidden md:flex"
           >
             {isCollapsed ? (
               <ChevronRight className="h-4 w-4" />
@@ -135,6 +136,7 @@ const Sidebar: React.FC<SidebarProps> = ({
                       animate={{ opacity: 1, x: 0 }}
                       exit={{ opacity: 0, x: -20 }}
                       transition={{ duration: 0.2 }}
+                      className="hidden md:inline"
                     >
                       {item.name}
                     </motion.span>
@@ -162,7 +164,7 @@ const Sidebar: React.FC<SidebarProps> = ({
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: -20 }}
                 transition={{ duration: 0.2 }}
-                className="flex-1 min-w-0"
+                className="flex-1 min-w-0 hidden md:block"
               >
                 <p className="text-sm font-medium text-gray-900 dark:text-white truncate">
                   {displayName}
@@ -192,7 +194,7 @@ const Sidebar: React.FC<SidebarProps> = ({
                   animate={{ opacity: 1, x: 0 }}
                   exit={{ opacity: 0, x: -20 }}
                   transition={{ duration: 0.2 }}
-                  className="ml-2"
+                  className="ml-2 hidden md:inline"
                 >
                   {isDarkMode ? 'Light Mode' : 'Dark Mode'}
                 </motion.span>
@@ -216,7 +218,7 @@ const Sidebar: React.FC<SidebarProps> = ({
                   animate={{ opacity: 1, x: 0 }}
                   exit={{ opacity: 0, x: -20 }}
                   transition={{ duration: 0.2 }}
-                  className="ml-2"
+                  className="ml-2 hidden md:inline"
                 >
                   Sign Out
                 </motion.span>
