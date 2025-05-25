@@ -99,3 +99,5 @@
     @apply bg-background text-foreground;
   }
 }
+
+@import './styles/scrollbar.css';

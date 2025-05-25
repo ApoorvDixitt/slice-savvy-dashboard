@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { useAuth } from '@/contexts/AuthContext';
 import { motion } from 'framer-motion';
-import { Pizza, ChefHat } from 'lucide-react';
+import { Pizza, ChefHat, Utensils, Store, BarChart3 } from 'lucide-react';
 
 const LoginPage: React.FC = () => {
   const { login } = useAuth();
@@ -61,7 +61,7 @@ const LoginPage: React.FC = () => {
             ease: "easeInOut"
           }}
         >
-          <Pizza className="w-12 h-12 text-orange-400 opacity-30" />
+          <BarChart3 className="w-12 h-12 text-orange-400 opacity-30" />
         </motion.div>
         <motion.div
           className="absolute bottom-1/3 right-1/3"
@@ -105,8 +105,10 @@ const LoginPage: React.FC = () => {
                     repeat: Infinity,
                     ease: "easeInOut"
                   }}
+                  className="relative"
                 >
-                  <ChefHat className="w-16 h-16 text-orange-500" />
+                  <Store className="w-16 h-16 text-orange-500" />
+                  <Utensils className="w-8 h-8 text-orange-600 absolute -bottom-2 -right-2" />
                 </motion.div>
                 <h1 className="text-5xl font-bold text-orange-700">Slice Savvy</h1>
               </motion.div>

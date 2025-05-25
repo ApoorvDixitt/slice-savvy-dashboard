@@ -59,6 +59,366 @@
       "loyaltyPoints": 978,
       "joinDate": "2023-10-05",
       "lastOrderDate": "2024-01-21"
+    },
+    {
+      "id": "CUST006",
+      "name": "Jennifer Lee",
+      "email": "jennifer.l@email.com",
+      "phone": "+1 (555) 789-0123",
+      "totalOrders": 42,
+      "totalRevenue": 1567.80,
+      "membershipTier": "Gold",
+      "loyaltyPoints": 1567,
+      "joinDate": "2023-07-18",
+      "lastOrderDate": "2024-01-24"
+    },
+    {
+      "id": "CUST007",
+      "name": "David Brown",
+      "email": "david.b@email.com",
+      "phone": "+1 (555) 234-5678",
+      "totalOrders": 19,
+      "totalRevenue": 567.25,
+      "membershipTier": "Bronze",
+      "loyaltyPoints": 567,
+      "joinDate": "2023-11-15",
+      "lastOrderDate": "2024-01-23"
+    },
+    {
+      "id": "CUST008",
+      "name": "Maria Garcia",
+      "email": "maria.g@email.com",
+      "phone": "+1 (555) 345-6789",
+      "totalOrders": 89,
+      "totalRevenue": 2789.50,
+      "membershipTier": "Platinum",
+      "loyaltyPoints": 2789,
+      "joinDate": "2023-05-20",
+      "lastOrderDate": "2024-01-24"
+    },
+    {
+      "id": "CUST009",
+      "name": "James Wilson",
+      "email": "james.w@email.com",
+      "phone": "+1 (555) 456-7890",
+      "totalOrders": 31,
+      "totalRevenue": 945.75,
+      "membershipTier": "Silver",
+      "loyaltyPoints": 945,
+      "joinDate": "2023-10-12",
+      "lastOrderDate": "2024-01-22"
+    },
+    {
+      "id": "CUST010",
+      "name": "Lisa Chen",
+      "email": "lisa.c@email.com",
+      "phone": "+1 (555) 567-8901",
+      "totalOrders": 54,
+      "totalRevenue": 1678.90,
+      "membershipTier": "Gold",
+      "loyaltyPoints": 1678,
+      "joinDate": "2023-08-05",
+      "lastOrderDate": "2024-01-24"
+    },
+    {
+      "id": "CUST011",
+      "name": "Michael Thompson",
+      "email": "michael.t@email.com",
+      "phone": "+1 (555) 678-9012",
+      "totalOrders": 23,
+      "totalRevenue": 678.45,
+      "membershipTier": "Bronze",
+      "loyaltyPoints": 678,
+      "joinDate": "2023-12-10",
+      "lastOrderDate": "2024-01-21"
+    },
+    {
+      "id": "CUST012",
+      "name": "Emma Rodriguez",
+      "email": "emma.r@email.com",
+      "phone": "+1 (555) 789-0123",
+      "totalOrders": 76,
+      "totalRevenue": 2345.60,
+      "membershipTier": "Platinum",
+      "loyaltyPoints": 2345,
+      "joinDate": "2023-06-25",
+      "lastOrderDate": "2024-01-24"
+    },
+    {
+      "id": "CUST013",
+      "name": "Daniel Kim",
+      "email": "daniel.k@email.com",
+      "phone": "+1 (555) 890-1234",
+      "totalOrders": 37,
+      "totalRevenue": 1123.80,
+      "membershipTier": "Silver",
+      "loyaltyPoints": 1123,
+      "joinDate": "2023-09-30",
+      "lastOrderDate": "2024-01-23"
+    },
+    {
+      "id": "CUST014",
+      "name": "Sophia Patel",
+      "email": "sophia.p@email.com",
+      "phone": "+1 (555) 901-2345",
+      "totalOrders": 61,
+      "totalRevenue": 1890.25,
+      "membershipTier": "Gold",
+      "loyaltyPoints": 1890,
+      "joinDate": "2023-07-15",
+      "lastOrderDate": "2024-01-24"
+    },
+    {
+      "id": "CUST015",
+      "name": "William Martinez",
+      "email": "william.m@email.com",
+      "phone": "+1 (555) 012-3456",
+      "totalOrders": 27,
+      "totalRevenue": 789.50,
+      "membershipTier": "Bronze",
+      "loyaltyPoints": 789,
+      "joinDate": "2023-11-20",
+      "lastOrderDate": "2024-01-22"
+    },
+    {
+      "id": "CUST016",
+      "name": "Olivia Anderson",
+      "email": "olivia.a@email.com",
+      "phone": "+1 (555) 123-4567",
+      "totalOrders": 45,
+      "totalRevenue": 1345.75,
+      "membershipTier": "Gold",
+      "loyaltyPoints": 1345,
+      "joinDate": "2023-08-22",
+      "lastOrderDate": "2024-01-24"
+    },
+    {
+      "id": "CUST017",
+      "name": "Ethan Taylor",
+      "email": "ethan.t@email.com",
+      "phone": "+1 (555) 234-5678",
+      "totalOrders": 29,
+      "totalRevenue": 867.90,
+      "membershipTier": "Silver",
+      "loyaltyPoints": 867,
+      "joinDate": "2023-10-15",
+      "lastOrderDate": "2024-01-23"
+    },
+    {
+      "id": "CUST018",
+      "name": "Ava Martinez",
+      "email": "ava.m@email.com",
+      "phone": "+1 (555) 345-6789",
+      "totalOrders": 82,
+      "totalRevenue": 2567.45,
+      "membershipTier": "Platinum",
+      "loyaltyPoints": 2567,
+      "joinDate": "2023-06-05",
+      "lastOrderDate": "2024-01-24"
+    },
+    {
+      "id": "CUST019",
+      "name": "Noah Wilson",
+      "email": "noah.w@email.com",
+      "phone": "+1 (555) 456-7890",
+      "totalOrders": 34,
+      "totalRevenue": 1023.60,
+      "membershipTier": "Silver",
+      "loyaltyPoints": 1023,
+      "joinDate": "2023-09-28",
+      "lastOrderDate": "2024-01-22"
+    },
+    {
+      "id": "CUST020",
+      "name": "Isabella Brown",
+      "email": "isabella.b@email.com",
+      "phone": "+1 (555) 567-8901",
+      "totalOrders": 58,
+      "totalRevenue": 1789.25,
+      "membershipTier": "Gold",
+      "loyaltyPoints": 1789,
+      "joinDate": "2023-07-30",
+      "lastOrderDate": "2024-01-24"
+    },
+    {
+      "id": "CUST021",
+      "name": "Liam Davis",
+      "email": "liam.d@email.com",
+      "phone": "+1 (555) 678-9012",
+      "totalOrders": 21,
+      "totalRevenue": 645.80,
+      "membershipTier": "Bronze",
+      "loyaltyPoints": 645,
+      "joinDate": "2023-12-05",
+      "lastOrderDate": "2024-01-21"
+    },
+    {
+      "id": "CUST022",
+      "name": "Sophia Garcia",
+      "email": "sophia.g@email.com",
+      "phone": "+1 (555) 789-0123",
+      "totalOrders": 71,
+      "totalRevenue": 2234.90,
+      "membershipTier": "Platinum",
+      "loyaltyPoints": 2234,
+      "joinDate": "2023-06-15",
+      "lastOrderDate": "2024-01-24"
+    },
+    {
+      "id": "CUST023",
+      "name": "Mason Rodriguez",
+      "email": "mason.r@email.com",
+      "phone": "+1 (555) 890-1234",
+      "totalOrders": 39,
+      "totalRevenue": 1189.45,
+      "membershipTier": "Silver",
+      "loyaltyPoints": 1189,
+      "joinDate": "2023-09-10",
+      "lastOrderDate": "2024-01-23"
+    },
+    {
+      "id": "CUST024",
+      "name": "Charlotte Lee",
+      "email": "charlotte.l@email.com",
+      "phone": "+1 (555) 901-2345",
+      "totalOrders": 63,
+      "totalRevenue": 1956.70,
+      "membershipTier": "Gold",
+      "loyaltyPoints": 1956,
+      "joinDate": "2023-07-25",
+      "lastOrderDate": "2024-01-24"
+    },
+    {
+      "id": "CUST025",
+      "name": "Elijah Thompson",
+      "email": "elijah.t@email.com",
+      "phone": "+1 (555) 012-3456",
+      "totalOrders": 25,
+      "totalRevenue": 745.30,
+      "membershipTier": "Bronze",
+      "loyaltyPoints": 745,
+      "joinDate": "2023-11-25",
+      "lastOrderDate": "2024-01-22"
+    },
+    {
+      "id": "CUST026",
+      "name": "Amelia White",
+      "email": "amelia.w@email.com",
+      "phone": "+1 (555) 123-4567",
+      "totalOrders": 48,
+      "totalRevenue": 1456.80,
+      "membershipTier": "Gold",
+      "loyaltyPoints": 1456,
+      "joinDate": "2023-08-10",
+      "lastOrderDate": "2024-01-24"
+    },
+    {
+      "id": "CUST027",
+      "name": "Benjamin Clark",
+      "email": "benjamin.c@email.com",
+      "phone": "+1 (555) 234-5678",
+      "totalOrders": 32,
+      "totalRevenue": 956.45,
+      "membershipTier": "Silver",
+      "loyaltyPoints": 956,
+      "joinDate": "2023-10-05",
+      "lastOrderDate": "2024-01-23"
+    },
+    {
+      "id": "CUST028",
+      "name": "Mia Lewis",
+      "email": "mia.l@email.com",
+      "phone": "+1 (555) 345-6789",
+      "totalOrders": 85,
+      "totalRevenue": 2678.90,
+      "membershipTier": "Platinum",
+      "loyaltyPoints": 2678,
+      "joinDate": "2023-06-01",
+      "lastOrderDate": "2024-01-24"
+    },
+    {
+      "id": "CUST029",
+      "name": "Lucas Walker",
+      "email": "lucas.w@email.com",
+      "phone": "+1 (555) 456-7890",
+      "totalOrders": 36,
+      "totalRevenue": 1089.75,
+      "membershipTier": "Silver",
+      "loyaltyPoints": 1089,
+      "joinDate": "2023-09-15",
+      "lastOrderDate": "2024-01-22"
+    },
+    {
+      "id": "CUST030",
+      "name": "Harper Hall",
+      "email": "harper.h@email.com",
+      "phone": "+1 (555) 567-8901",
+      "totalOrders": 65,
+      "totalRevenue": 2012.30,
+      "membershipTier": "Gold",
+      "loyaltyPoints": 2012,
+      "joinDate": "2023-07-20",
+      "lastOrderDate": "2024-01-24"
+    },
+    {
+      "id": "CUST031",
+      "name": "Alexander Young",
+      "email": "alexander.y@email.com",
+      "phone": "+1 (555) 678-9012",
+      "totalOrders": 24,
+      "totalRevenue": 712.60,
+      "membershipTier": "Bronze",
+      "loyaltyPoints": 712,
+      "joinDate": "2023-12-15",
+      "lastOrderDate": "2024-01-21"
+    },
+    {
+      "id": "CUST032",
+      "name": "Evelyn Allen",
+      "email": "evelyn.a@email.com",
+      "phone": "+1 (555) 789-0123",
+      "totalOrders": 73,
+      "totalRevenue": 2289.45,
+      "membershipTier": "Platinum",
+      "loyaltyPoints": 2289,
+      "joinDate": "2023-06-25",
+      "lastOrderDate": "2024-01-24"
+    },
+    {
+      "id": "CUST033",
+      "name": "Henry King",
+      "email": "henry.k@email.com",
+      "phone": "+1 (555) 890-1234",
+      "totalOrders": 41,
+      "totalRevenue": 1234.80,
+      "membershipTier": "Silver",
+      "loyaltyPoints": 1234,
+      "joinDate": "2023-09-05",
+      "lastOrderDate": "2024-01-23"
+    },
+    {
+      "id": "CUST034",
+      "name": "Abigail Wright",
+      "email": "abigail.w@email.com",
+      "phone": "+1 (555) 901-2345",
+      "totalOrders": 67,
+      "totalRevenue": 2078.90,
+      "membershipTier": "Gold",
+      "loyaltyPoints": 2078,
+      "joinDate": "2023-07-30",
+      "lastOrderDate": "2024-01-24"
+    },
+    {
+      "id": "CUST035",
+      "name": "Sebastian Lopez",
+      "email": "sebastian.l@email.com",
+      "phone": "+1 (555) 012-3456",
+      "totalOrders": 28,
+      "totalRevenue": 834.25,
+      "membershipTier": "Bronze",
+      "loyaltyPoints": 834,
+      "joinDate": "2023-11-30",
+      "lastOrderDate": "2024-01-22"
     }
   ],
   "orders": [
@@ -111,6 +471,306 @@
       "total": 21.50,
       "orderDate": "2024-01-24T16:35:00Z",
       "status": "Delivered"
+    },
+    {
+      "orderId": "PZA011",
+      "customer": "Jennifer Lee",
+      "customerEmail": "jennifer.l@email.com",
+      "pizzaType": "Supreme",
+      "quantity": 2,
+      "total": 45.98,
+      "orderDate": "2024-01-24T16:20:00Z",
+      "status": "Delivered"
+    },
+    {
+      "orderId": "PZA012",
+      "customer": "David Brown",
+      "customerEmail": "david.b@email.com",
+      "pizzaType": "Vegetarian",
+      "quantity": 1,
+      "total": 19.99,
+      "orderDate": "2024-01-24T16:15:00Z",
+      "status": "Delivered"
+    },
+    {
+      "orderId": "PZA013",
+      "customer": "Maria Garcia",
+      "customerEmail": "maria.g@email.com",
+      "pizzaType": "Meat Lovers",
+      "quantity": 3,
+      "total": 59.97,
+      "orderDate": "2024-01-24T16:10:00Z",
+      "status": "Preparing"
+    },
+    {
+      "orderId": "PZA014",
+      "customer": "James Wilson",
+      "customerEmail": "james.w@email.com",
+      "pizzaType": "Hawaiian",
+      "quantity": 2,
+      "total": 39.98,
+      "orderDate": "2024-01-24T16:05:00Z",
+      "status": "Out for Delivery"
+    },
+    {
+      "orderId": "PZA015",
+      "customer": "Lisa Chen",
+      "customerEmail": "lisa.c@email.com",
+      "pizzaType": "Buffalo Chicken",
+      "quantity": 1,
+      "total": 22.99,
+      "orderDate": "2024-01-24T16:00:00Z",
+      "status": "Pending"
+    },
+    {
+      "orderId": "PZA016",
+      "customer": "Michael Thompson",
+      "customerEmail": "michael.t@email.com",
+      "pizzaType": "Four Cheese",
+      "quantity": 2,
+      "total": 35.98,
+      "orderDate": "2024-01-24T15:55:00Z",
+      "status": "Delivered"
+    },
+    {
+      "orderId": "PZA017",
+      "customer": "Emma Rodriguez",
+      "customerEmail": "emma.r@email.com",
+      "pizzaType": "Pepperoni",
+      "quantity": 3,
+      "total": 56.97,
+      "orderDate": "2024-01-24T15:50:00Z",
+      "status": "Preparing"
+    },
+    {
+      "orderId": "PZA018",
+      "customer": "Daniel Kim",
+      "customerEmail": "daniel.k@email.com",
+      "pizzaType": "Margherita",
+      "quantity": 1,
+      "total": 16.99,
+      "orderDate": "2024-01-24T15:45:00Z",
+      "status": "Out for Delivery"
+    },
+    {
+      "orderId": "PZA019",
+      "customer": "Sophia Patel",
+      "customerEmail": "sophia.p@email.com",
+      "pizzaType": "BBQ Chicken",
+      "quantity": 2,
+      "total": 43.98,
+      "orderDate": "2024-01-24T15:40:00Z",
+      "status": "Pending"
+    },
+    {
+      "orderId": "PZA020",
+      "customer": "William Martinez",
+      "customerEmail": "william.m@email.com",
+      "pizzaType": "Supreme",
+      "quantity": 1,
+      "total": 22.99,
+      "orderDate": "2024-01-24T15:35:00Z",
+      "status": "Delivered"
+    },
+    {
+      "orderId": "PZA021",
+      "customer": "Olivia Anderson",
+      "customerEmail": "olivia.a@email.com",
+      "pizzaType": "Pepperoni",
+      "quantity": 2,
+      "total": 37.98,
+      "orderDate": "2024-01-24T15:30:00Z",
+      "status": "Preparing"
+    },
+    {
+      "orderId": "PZA022",
+      "customer": "Ethan Taylor",
+      "customerEmail": "ethan.t@email.com",
+      "pizzaType": "Margherita",
+      "quantity": 1,
+      "total": 16.99,
+      "orderDate": "2024-01-24T15:25:00Z",
+      "status": "Out for Delivery"
+    },
+    {
+      "orderId": "PZA023",
+      "customer": "Ava Martinez",
+      "customerEmail": "ava.m@email.com",
+      "pizzaType": "Supreme",
+      "quantity": 3,
+      "total": 68.97,
+      "orderDate": "2024-01-24T15:20:00Z",
+      "status": "Pending"
+    },
+    {
+      "orderId": "PZA024",
+      "customer": "Noah Wilson",
+      "customerEmail": "noah.w@email.com",
+      "pizzaType": "Hawaiian",
+      "quantity": 2,
+      "total": 39.98,
+      "orderDate": "2024-01-24T15:15:00Z",
+      "status": "Delivered"
+    },
+    {
+      "orderId": "PZA025",
+      "customer": "Isabella Brown",
+      "customerEmail": "isabella.b@email.com",
+      "pizzaType": "Meat Lovers",
+      "quantity": 1,
+      "total": 21.99,
+      "orderDate": "2024-01-24T15:10:00Z",
+      "status": "Preparing"
+    },
+    {
+      "orderId": "PZA026",
+      "customer": "Liam Davis",
+      "customerEmail": "liam.d@email.com",
+      "pizzaType": "Vegetarian",
+      "quantity": 2,
+      "total": 39.98,
+      "orderDate": "2024-01-24T15:05:00Z",
+      "status": "Out for Delivery"
+    },
+    {
+      "orderId": "PZA027",
+      "customer": "Sophia Garcia",
+      "customerEmail": "sophia.g@email.com",
+      "pizzaType": "BBQ Chicken",
+      "quantity": 3,
+      "total": 68.97,
+      "orderDate": "2024-01-24T15:00:00Z",
+      "status": "Pending"
+    },
+    {
+      "orderId": "PZA028",
+      "customer": "Mason Rodriguez",
+      "customerEmail": "mason.r@email.com",
+      "pizzaType": "Four Cheese",
+      "quantity": 1,
+      "total": 16.99,
+      "orderDate": "2024-01-24T14:55:00Z",
+      "status": "Delivered"
+    },
+    {
+      "orderId": "PZA029",
+      "customer": "Charlotte Lee",
+      "customerEmail": "charlotte.l@email.com",
+      "pizzaType": "Pepperoni",
+      "quantity": 2,
+      "total": 37.98,
+      "orderDate": "2024-01-24T14:50:00Z",
+      "status": "Preparing"
+    },
+    {
+      "orderId": "PZA030",
+      "customer": "Elijah Thompson",
+      "customerEmail": "elijah.t@email.com",
+      "pizzaType": "Margherita",
+      "quantity": 1,
+      "total": 16.99,
+      "orderDate": "2024-01-24T14:45:00Z",
+      "status": "Out for Delivery"
+    },
+    {
+      "orderId": "PZA031",
+      "customer": "Amelia White",
+      "customerEmail": "amelia.w@email.com",
+      "pizzaType": "Supreme",
+      "quantity": 2,
+      "total": 45.98,
+      "orderDate": "2024-01-24T14:40:00Z",
+      "status": "Preparing"
+    },
+    {
+      "orderId": "PZA032",
+      "customer": "Benjamin Clark",
+      "customerEmail": "benjamin.c@email.com",
+      "pizzaType": "Hawaiian",
+      "quantity": 1,
+      "total": 19.99,
+      "orderDate": "2024-01-24T14:35:00Z",
+      "status": "Out for Delivery"
+    },
+    {
+      "orderId": "PZA033",
+      "customer": "Mia Lewis",
+      "customerEmail": "mia.l@email.com",
+      "pizzaType": "Meat Lovers",
+      "quantity": 3,
+      "total": 65.97,
+      "orderDate": "2024-01-24T14:30:00Z",
+      "status": "Pending"
+    },
+    {
+      "orderId": "PZA034",
+      "customer": "Lucas Walker",
+      "customerEmail": "lucas.w@email.com",
+      "pizzaType": "Vegetarian",
+      "quantity": 2,
+      "total": 39.98,
+      "orderDate": "2024-01-24T14:25:00Z",
+      "status": "Delivered"
+    },
+    {
+      "orderId": "PZA035",
+      "customer": "Harper Hall",
+      "customerEmail": "harper.h@email.com",
+      "pizzaType": "BBQ Chicken",
+      "quantity": 1,
+      "total": 20.99,
+      "orderDate": "2024-01-24T14:20:00Z",
+      "status": "Preparing"
+    },
+    {
+      "orderId": "PZA036",
+      "customer": "Alexander Young",
+      "customerEmail": "alexander.y@email.com",
+      "pizzaType": "Four Cheese",
+      "quantity": 2,
+      "total": 33.98,
+      "orderDate": "2024-01-24T14:15:00Z",
+      "status": "Out for Delivery"
+    },
+    {
+      "orderId": "PZA037",
+      "customer": "Evelyn Allen",
+      "customerEmail": "evelyn.a@email.com",
+      "pizzaType": "Pepperoni",
+      "quantity": 3,
+      "total": 56.97,
+      "orderDate": "2024-01-24T14:10:00Z",
+      "status": "Pending"
+    },
+    {
+      "orderId": "PZA038",
+      "customer": "Henry King",
+      "customerEmail": "henry.k@email.com",
+      "pizzaType": "Margherita",
+      "quantity": 1,
+      "total": 16.99,
+      "orderDate": "2024-01-24T14:05:00Z",
+      "status": "Delivered"
+    },
+    {
+      "orderId": "PZA039",
+      "customer": "Abigail Wright",
+      "customerEmail": "abigail.w@email.com",
+      "pizzaType": "Supreme",
+      "quantity": 2,
+      "total": 45.98,
+      "orderDate": "2024-01-24T14:00:00Z",
+      "status": "Preparing"
+    },
+    {
+      "orderId": "PZA040",
+      "customer": "Sebastian Lopez",
+      "customerEmail": "sebastian.l@email.com",
+      "pizzaType": "Hawaiian",
+      "quantity": 1,
+      "total": 19.99,
+      "orderDate": "2024-01-24T13:55:00Z",
+      "status": "Out for Delivery"
     }
   ],
   "menuItems": [
@@ -149,6 +809,276 @@
       "description": "Toasted bread with garlic butter and herbs",
       "ingredients": ["Bread", "Garlic", "Butter", "Herbs"],
       "isPopular": false
+    },
+    {
+      "id": "PIZZA003",
+      "name": "Supreme Pizza",
+      "category": "Pizza",
+      "price": 22.99,
+      "description": "Loaded pizza with pepperoni, sausage, bell peppers, onions, and mushrooms",
+      "ingredients": ["Pepperoni", "Sausage", "Bell Peppers", "Onions", "Mushrooms", "Mozzarella", "Tomato Sauce"],
+      "isPopular": true
+    },
+    {
+      "id": "PIZZA004",
+      "name": "Hawaiian Pizza",
+      "category": "Pizza",
+      "price": 19.99,
+      "description": "Classic combination of ham and pineapple on a pizza",
+      "ingredients": ["Ham", "Pineapple", "Mozzarella", "Tomato Sauce"],
+      "isPopular": true
+    },
+    {
+      "id": "PIZZA005",
+      "name": "Meat Lovers Pizza",
+      "category": "Pizza",
+      "price": 21.99,
+      "description": "Pizza loaded with various meats including pepperoni, sausage, bacon, and ham",
+      "ingredients": ["Pepperoni", "Sausage", "Bacon", "Ham", "Mozzarella", "Tomato Sauce"],
+      "isPopular": true
+    },
+    {
+      "id": "PIZZA006",
+      "name": "Vegetarian Pizza",
+      "category": "Pizza",
+      "price": 19.99,
+      "description": "Pizza topped with fresh vegetables including bell peppers, onions, mushrooms, and olives",
+      "ingredients": ["Bell Peppers", "Onions", "Mushrooms", "Olives", "Mozzarella", "Tomato Sauce"],
+      "isPopular": false
+    },
+    {
+      "id": "SALAD002",
+      "name": "Greek Salad",
+      "category": "Salads",
+      "price": 13.99,
+      "description": "Fresh salad with feta cheese, olives, tomatoes, and cucumber",
+      "ingredients": ["Lettuce", "Feta Cheese", "Olives", "Tomatoes", "Cucumber", "Greek Dressing"],
+      "isPopular": false
+    },
+    {
+      "id": "SALAD003",
+      "name": "Garden Salad",
+      "category": "Salads",
+      "price": 11.99,
+      "description": "Mixed greens with cherry tomatoes, cucumber, and carrots",
+      "ingredients": ["Mixed Greens", "Cherry Tomatoes", "Cucumber", "Carrots", "Balsamic Dressing"],
+      "isPopular": false
+    },
+    {
+      "id": "APP002",
+      "name": "Mozzarella Sticks",
+      "category": "Appetizers",
+      "price": 8.99,
+      "description": "Breaded mozzarella sticks served with marinara sauce",
+      "ingredients": ["Mozzarella", "Breadcrumbs", "Marinara Sauce"],
+      "isPopular": true
+    },
+    {
+      "id": "APP003",
+      "name": "Chicken Wings",
+      "category": "Appetizers",
+      "price": 12.99,
+      "description": "Crispy chicken wings with choice of sauce",
+      "ingredients": ["Chicken Wings", "Buffalo Sauce", "Blue Cheese Dressing"],
+      "isPopular": true
+    },
+    {
+      "id": "DRINK001",
+      "name": "Fountain Soda",
+      "category": "Drinks",
+      "price": 2.99,
+      "description": "Choice of carbonated soft drinks",
+      "ingredients": ["Carbonated Water", "High Fructose Corn Syrup", "Natural Flavors"],
+      "isPopular": true
+    },
+    {
+      "id": "DRINK002",
+      "name": "Bottled Water",
+      "category": "Drinks",
+      "price": 1.99,
+      "description": "Purified bottled water",
+      "ingredients": ["Purified Water"],
+      "isPopular": false
+    },
+    {
+      "id": "PIZZA007",
+      "name": "Buffalo Chicken Pizza",
+      "category": "Pizza",
+      "price": 20.99,
+      "description": "Spicy buffalo chicken pizza with ranch drizzle",
+      "ingredients": ["Buffalo Chicken", "Mozzarella", "Ranch Drizzle", "Blue Cheese"],
+      "isPopular": true
+    },
+    {
+      "id": "PIZZA008",
+      "name": "Mediterranean Pizza",
+      "category": "Pizza",
+      "price": 21.99,
+      "description": "Pizza with feta cheese, olives, artichokes, and sun-dried tomatoes",
+      "ingredients": ["Feta Cheese", "Olives", "Artichokes", "Sun-dried Tomatoes", "Mozzarella"],
+      "isPopular": false
+    },
+    {
+      "id": "PIZZA009",
+      "name": "BBQ Chicken Pizza",
+      "category": "Pizza",
+      "price": 20.99,
+      "description": "Pizza with BBQ sauce, grilled chicken, and red onions",
+      "ingredients": ["BBQ Sauce", "Grilled Chicken", "Red Onions", "Mozzarella"],
+      "isPopular": true
+    },
+    {
+      "id": "PIZZA010",
+      "name": "Spinach and Feta Pizza",
+      "category": "Pizza",
+      "price": 19.99,
+      "description": "Pizza with fresh spinach, feta cheese, and garlic",
+      "ingredients": ["Spinach", "Feta Cheese", "Garlic", "Mozzarella", "Olive Oil"],
+      "isPopular": false
+    },
+    {
+      "id": "SALAD004",
+      "name": "Cobb Salad",
+      "category": "Salads",
+      "price": 14.99,
+      "description": "Classic Cobb salad with chicken, bacon, eggs, and blue cheese",
+      "ingredients": ["Lettuce", "Chicken", "Bacon", "Eggs", "Blue Cheese", "Avocado", "Tomatoes"],
+      "isPopular": true
+    },
+    {
+      "id": "SALAD005",
+      "name": "Caesar Salad with Chicken",
+      "category": "Salads",
+      "price": 13.99,
+      "description": "Caesar salad topped with grilled chicken breast",
+      "ingredients": ["Romaine Lettuce", "Grilled Chicken", "Parmesan", "Croutons", "Caesar Dressing"],
+      "isPopular": true
+    },
+    {
+      "id": "APP004",
+      "name": "Bruschetta",
+      "category": "Appetizers",
+      "price": 9.99,
+      "description": "Toasted bread topped with fresh tomatoes, basil, and garlic",
+      "ingredients": ["Bread", "Tomatoes", "Basil", "Garlic", "Olive Oil"],
+      "isPopular": false
+    },
+    {
+      "id": "APP005",
+      "name": "Calamari",
+      "category": "Appetizers",
+      "price": 13.99,
+      "description": "Crispy fried calamari served with marinara sauce",
+      "ingredients": ["Calamari", "Breadcrumbs", "Marinara Sauce"],
+      "isPopular": true
+    },
+    {
+      "id": "DRINK003",
+      "name": "Iced Tea",
+      "category": "Drinks",
+      "price": 2.99,
+      "description": "Fresh brewed iced tea",
+      "ingredients": ["Black Tea", "Water", "Lemon"],
+      "isPopular": true
+    },
+    {
+      "id": "DRINK004",
+      "name": "Lemonade",
+      "category": "Drinks",
+      "price": 3.99,
+      "description": "Fresh squeezed lemonade",
+      "ingredients": ["Lemons", "Water", "Sugar"],
+      "isPopular": true
+    },
+    {
+      "id": "PIZZA011",
+      "name": "Pesto Chicken Pizza",
+      "category": "Pizza",
+      "price": 21.99,
+      "description": "Pizza with pesto sauce, grilled chicken, and cherry tomatoes",
+      "ingredients": ["Pesto Sauce", "Grilled Chicken", "Cherry Tomatoes", "Mozzarella"],
+      "isPopular": true
+    },
+    {
+      "id": "PIZZA012",
+      "name": "Truffle Mushroom Pizza",
+      "category": "Pizza",
+      "price": 23.99,
+      "description": "Pizza with truffle oil, wild mushrooms, and fontina cheese",
+      "ingredients": ["Truffle Oil", "Wild Mushrooms", "Fontina Cheese", "Mozzarella"],
+      "isPopular": false
+    },
+    {
+      "id": "PIZZA013",
+      "name": "Seafood Pizza",
+      "category": "Pizza",
+      "price": 24.99,
+      "description": "Pizza with shrimp, calamari, and crab meat",
+      "ingredients": ["Shrimp", "Calamari", "Crab Meat", "Mozzarella", "White Sauce"],
+      "isPopular": true
+    },
+    {
+      "id": "PIZZA014",
+      "name": "Breakfast Pizza",
+      "category": "Pizza",
+      "price": 20.99,
+      "description": "Pizza with eggs, bacon, and breakfast potatoes",
+      "ingredients": ["Eggs", "Bacon", "Breakfast Potatoes", "Cheddar Cheese"],
+      "isPopular": false
+    },
+    {
+      "id": "SALAD006",
+      "name": "Southwest Salad",
+      "category": "Salads",
+      "price": 13.99,
+      "description": "Salad with black beans, corn, and chipotle dressing",
+      "ingredients": ["Lettuce", "Black Beans", "Corn", "Avocado", "Chipotle Dressing"],
+      "isPopular": true
+    },
+    {
+      "id": "SALAD007",
+      "name": "Asian Salad",
+      "category": "Salads",
+      "price": 14.99,
+      "description": "Salad with mandarin oranges, wonton strips, and ginger dressing",
+      "ingredients": ["Lettuce", "Mandarin Oranges", "Wonton Strips", "Ginger Dressing"],
+      "isPopular": false
+    },
+    {
+      "id": "APP006",
+      "name": "Stuffed Mushrooms",
+      "category": "Appetizers",
+      "price": 10.99,
+      "description": "Mushrooms stuffed with cheese and herbs",
+      "ingredients": ["Mushrooms", "Cheese", "Herbs", "Breadcrumbs"],
+      "isPopular": false
+    },
+    {
+      "id": "APP007",
+      "name": "Nachos",
+      "category": "Appetizers",
+      "price": 11.99,
+      "description": "Tortilla chips with cheese, jalapeños, and salsa",
+      "ingredients": ["Tortilla Chips", "Cheese", "Jalapeños", "Salsa", "Sour Cream"],
+      "isPopular": true
+    },
+    {
+      "id": "DRINK005",
+      "name": "Sparkling Water",
+      "category": "Drinks",
+      "price": 2.99,
+      "description": "Carbonated mineral water",
+      "ingredients": ["Mineral Water", "Carbonation"],
+      "isPopular": false
+    },
+    {
+      "id": "DRINK006",
+      "name": "Fresh Juice",
+      "category": "Drinks",
+      "price": 4.99,
+      "description": "Fresh squeezed orange or grapefruit juice",
+      "ingredients": ["Fresh Fruit", "Ice"],
+      "isPopular": true
     }
   ],
   "analytics": {
@@ -160,13 +1090,16 @@
     "ordersGrowth": 8.2,
     "customersGrowth": -2.1,
     "avgOrderValueGrowth": 5.7,
-    "monthlyRevenue": [4000, 5500, 7200, 6800, 8900, 9200],
+    "monthlyRevenue": [4000, 5500, 7200, 6800, 8900, 9200, 9500, 9800, 10200, 10500, 10800, 11000],
     "pizzaSalesDistribution": {
       "Pepperoni": 35,
       "Margherita": 25,
       "Hawaiian": 15,
       "BBQ Chicken": 12,
-      "Four Cheese": 13
+      "Four Cheese": 13,
+      "Supreme": 20,
+      "Meat Lovers": 18,
+      "Vegetarian": 10
     }
   }
 }

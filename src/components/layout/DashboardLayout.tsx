@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { Outlet } from 'react-router-dom';
 import Sidebar from './Sidebar';
 import Footer from './Footer';
+import PageTransition from './PageTransition';
+import { motion } from 'framer-motion';
 
 const DashboardLayout: React.FC = () => {
   const [isCollapsed, setIsCollapsed] = useState(false);
@@ -35,18 +37,25 @@ const DashboardLayout: React.FC = () => {
         isDarkMode={isDarkMode}
         onThemeToggle={handleThemeToggle}
       />
-      <div
-        className={
-          isCollapsed
-            ? "flex-1 flex flex-col min-h-screen transition-all duration-300 ml-0"
-            : "flex-1 flex flex-col min-h-screen transition-all duration-300 ml-64"
-        }
+      <motion.div
+        className="flex-1 flex flex-col min-h-screen"
+        initial={false}
+        animate={{
+          marginLeft: isCollapsed ? "4rem" : "16rem"
+        }}
+        transition={{
+          type: "spring",
+          stiffness: 300,
+          damping: 30
+        }}
       >
         <main className="flex-1 p-6">
-          <Outlet />
+          <PageTransition>
+            <Outlet />
+          </PageTransition>
         </main>
         <Footer />
-      </div>
+      </motion.div>
     </div>
   );
 };

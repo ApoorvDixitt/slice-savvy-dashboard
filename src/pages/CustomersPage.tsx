@@ -36,6 +36,14 @@ const CustomersPage: React.FC = () => {
   const avgOrderValue = customers.reduce((sum, c) => sum + (c.totalRevenue / c.totalOrders), 0) / customers.length;
   const totalRevenue = customers.reduce((sum, c) => sum + c.totalRevenue, 0);
   const loyaltyMembers = customers.filter(c => c.membershipTier !== 'Bronze').length;
+  
+  // Calculate new customers this month
+  const currentMonth = new Date().getMonth();
+  const currentYear = new Date().getFullYear();
+  const newCustomersThisMonth = customers.filter(customer => {
+    const joinDate = new Date(customer.joinDate);
+    return joinDate.getMonth() === currentMonth && joinDate.getFullYear() === currentYear;
+  }).length;
 
   return (
     <div className="space-y-6">
@@ -58,7 +66,7 @@ const CustomersPage: React.FC = () => {
               <div>
                 <p className="text-sm text-gray-600 mb-1">Total Customers</p>
                 <p className="text-2xl font-bold text-gray-900 dark:text-white">{totalCustomers}</p>
-                <p className="text-xs text-blue-600">4 new this month</p>
+                <p className="text-xs text-blue-600">{newCustomersThisMonth} new this month</p>
               </div>
               <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
                 <Users className="w-6 h-6 text-blue-600" />

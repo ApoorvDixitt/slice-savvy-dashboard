@@ -8,16 +8,12 @@ import { PieChart as PieChartIcon, Users, LayoutDashboard, Pizza } from 'lucide-
 
 const AnalyticsPage: React.FC = () => {
   const [activeTab, setActiveTab] = useState('Overview');
-  const { analytics } = mockData;
+  const { analytics, orders, customers } = mockData;
 
-  const monthlyData = [
-    { month: 'Jan', revenue: 4000 },
-    { month: 'Feb', revenue: 5500 },
-    { month: 'Mar', revenue: 7200 },
-    { month: 'Apr', revenue: 6800 },
-    { month: 'May', revenue: 8900 },
-    { month: 'Jun', revenue: 9200 },
-  ];
+  const monthlyData = analytics.monthlyRevenue.map((revenue, index) => ({
+    month: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'][index],
+    revenue
+  }));
 
   const pieData = Object.entries(analytics.pizzaSalesDistribution).map(([name, value]) => ({
     name,
@@ -27,6 +23,12 @@ const AnalyticsPage: React.FC = () => {
   const COLORS = ['#FF8C00', '#FFB347', '#FF7F50', '#FF6347', '#CD853F'];
 
   const tabs = ['Overview', 'Sales', 'Products', 'Customers'];
+
+  // Calculate total revenue from orders
+  const totalRevenue = orders.reduce((sum, order) => sum + order.total, 0);
+  const totalOrders = orders.length;
+  const activeCustomers = customers.length;
+  const avgOrderValue = totalRevenue / totalOrders;
 
   return (
     <div className="space-y-6">
@@ -53,9 +55,9 @@ const AnalyticsPage: React.FC = () => {
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-sm text-gray-600 mb-1">Total Revenue</p>
-                <p className="text-2xl font-bold text-gray-900 dark:text-white">$42,350</p>
+                <p className="text-2xl font-bold text-gray-900 dark:text-white">${totalRevenue.toFixed(2)}</p>
                 <p className="text-xs text-green-600 flex items-center">
-                  <span className="mr-1">↗</span> +12.5% from last month
+                  <span className="mr-1">↗</span> +{analytics.revenueGrowth}% from last month
                 </p>
               </div>
               <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center">
@@ -70,9 +72,9 @@ const AnalyticsPage: React.FC = () => {
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-sm text-gray-600 mb-1">Total Orders</p>
-                <p className="text-2xl font-bold text-gray-900 dark:text-white">1,445</p>
+                <p className="text-2xl font-bold text-gray-900 dark:text-white">{totalOrders}</p>
                 <p className="text-xs text-green-600 flex items-center">
-                  <span className="mr-1">↗</span> +8.2% from last month
+                  <span className="mr-1">↗</span> +{analytics.ordersGrowth}% from last month
                 </p>
               </div>
               <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
@@ -87,9 +89,9 @@ const AnalyticsPage: React.FC = () => {
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-sm text-gray-600 mb-1">Active Customers</p>
-                <p className="text-2xl font-bold text-gray-900 dark:text-white">892</p>
+                <p className="text-2xl font-bold text-gray-900 dark:text-white">{activeCustomers}</p>
                 <p className="text-xs text-red-600 flex items-center">
-                  <span className="mr-1">↘</span> -2.1% from last month
+                  <span className="mr-1">↘</span> {analytics.customersGrowth}% from last month
                 </p>
               </div>
               <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center">
@@ -104,9 +106,9 @@ const AnalyticsPage: React.FC = () => {
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-sm text-gray-600 mb-1">Avg Order Value</p>
-                <p className="text-2xl font-bold text-gray-900 dark:text-white">$29.31</p>
+                <p className="text-2xl font-bold text-gray-900 dark:text-white">${avgOrderValue.toFixed(2)}</p>
                 <p className="text-xs text-green-600 flex items-center">
-                  <span className="mr-1">↗</span> +5.7% from last month
+                  <span className="mr-1">↗</span> +{analytics.avgOrderValueGrowth}% from last month
                 </p>
               </div>
               <div className="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center">

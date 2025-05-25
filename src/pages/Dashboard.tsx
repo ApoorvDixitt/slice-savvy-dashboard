@@ -1,35 +1,112 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Progress } from '@/components/ui/progress';
 import { useAuth } from '@/contexts/AuthContext';
 import mockData from '@/data/mockData.json';
-import { PieChart, Users, LayoutDashboard, Pizza } from 'lucide-react';
+import { PieChart, Users, LayoutDashboard, Pizza, Clock } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
+import { motion } from 'framer-motion';
 
 const Dashboard: React.FC = () => {
   const { user } = useAuth();
-  const { analytics, orders } = mockData;
+  const navigate = useNavigate();
+  const { analytics, orders, customers } = mockData;
+  const [currentTime, setCurrentTime] = useState(new Date());
 
-  const recentOrders = orders.slice(0, 4);
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentTime(new Date());
+    }, 1000);
+
+    return () => clearInterval(timer);
+  }, []);
+
+  const getGreeting = () => {
+    const hour = new Date().getHours();
+    if (hour < 12) return "Rise and shine";
+    if (hour < 18) return "Ready to serve";
+    return "Evening service";
+  };
+
+  const getMotivation = () => {
+    const messages = [
+      "Let's make today delicious!",
+      "Time to create some magic!",
+      "Ready to serve happiness!",
+      "Let's make it a great day!",
+      "Time to shine!",
+    ];
+    return messages[Math.floor(Math.random() * messages.length)];
+  };
+
+  const recentOrders = orders.slice(0, 10);
+  const totalOrders = orders.length;
+  const activeCustomers = customers.length;
+  const todayRevenue = orders
+    .filter(order => new Date(order.orderDate).toDateString() === new Date().toDateString())
+    .reduce((sum, order) => sum + order.total, 0);
 
   const quickActions = [
-    { name: 'View All Orders', icon: PieChart, color: 'bg-blue-500' },
-    { name: 'Manage Menu', icon: Pizza, color: 'bg-green-500' },
-    { name: 'View Analytics', icon: PieChart, color: 'bg-orange-500' },
-    { name: 'Customer List', icon: Users, color: 'bg-purple-500' },
+    { name: 'View All Orders', icon: PieChart, color: 'bg-blue-500', path: '/orders' },
+    { name: 'Manage Menu', icon: Pizza, color: 'bg-green-500', path: '/menu' },
+    { name: 'View Analytics', icon: PieChart, color: 'bg-orange-500', path: '/analytics' },
+    { name: 'Customer List', icon: Users, color: 'bg-purple-500', path: '/customers' },
   ];
+
+  const handleQuickAction = (path: string) => {
+    navigate(path);
+  };
 
   return (
     <div className="space-y-6">
       {/* Welcome Section */}
-      <div className="bg-gradient-to-r from-orange-400 to-red-500 rounded-lg p-6 text-white">
-        <div className="flex items-center space-x-2 mb-2">
-          <span className="text-2xl">👋</span>
-          <h1 className="text-2xl font-bold">Hello, {user?.name}!</h1>
+      <div className="bg-gradient-to-r from-orange-300 via-orange-400 to-red-400 rounded-lg p-4 text-white shadow-md">
+        <div className="flex items-center justify-between">
+          <div className="flex items-center space-x-3">
+            <motion.div
+              animate={{ rotate: [0, 10, 0] }}
+              transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+            >
+              <span className="text-2xl">👋</span>
+            </motion.div>
+            <div>
+              <h1 className="text-xl font-bold">
+                {user?.user_metadata?.full_name || user?.email?.split('@')[0] || 'Chef'}
+              </h1>
+              <div className="flex items-center space-x-2">
+                <p className="text-sm text-orange-50">
+                  {getGreeting()}
+                </p>
+                <span className="text-orange-200">•</span>
+                <p className="text-sm text-orange-50">
+                  {getMotivation()}
+                </p>
+              </div>
+            </div>
+          </div>
+          
+          <div className="flex items-center space-x-4 text-right">
+            <div className="flex items-center space-x-2">
+              <Clock className="w-4 h-4 text-orange-50" />
+              <span className="text-sm font-medium">
+                {currentTime.toLocaleTimeString('en-US', { 
+                  hour: '2-digit', 
+                  minute: '2-digit',
+                  hour12: true 
+                })}
+              </span>
+            </div>
+            <div className="h-8 w-px bg-orange-200/30" />
+            <div className="text-sm text-orange-50">
+              {currentTime.toLocaleDateString('en-US', { 
+                weekday: 'short',
+                month: 'short', 
+                day: 'numeric' 
+              })}
+            </div>
+          </div>
         </div>
-        <p className="text-orange-100">
-          Welcome back to your pizza dashboard. Here's what's happening today.
-        </p>
       </div>
 
       {/* Key Metrics */}
@@ -39,8 +116,8 @@ const Dashboard: React.FC = () => {
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-sm text-gray-600 mb-1">Total Orders</p>
-                <p className="text-2xl font-bold text-blue-600">127</p>
-                <p className="text-xs text-green-600">+12%</p>
+                <p className="text-2xl font-bold text-blue-600">{totalOrders}</p>
+                <p className="text-xs text-green-600">+{analytics.ordersGrowth}%</p>
               </div>
               <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
                 <PieChart className="w-6 h-6 text-blue-600" />
@@ -54,8 +131,8 @@ const Dashboard: React.FC = () => {
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-sm text-gray-600 mb-1">Active Customers</p>
-                <p className="text-2xl font-bold text-green-600">89</p>
-                <p className="text-xs text-green-600">+8%</p>
+                <p className="text-2xl font-bold text-green-600">{activeCustomers}</p>
+                <p className="text-xs text-green-600">+{analytics.customersGrowth}%</p>
               </div>
               <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center">
                 <Users className="w-6 h-6 text-green-600" />
@@ -69,8 +146,8 @@ const Dashboard: React.FC = () => {
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-sm text-gray-600 mb-1">Revenue Today</p>
-                <p className="text-2xl font-bold text-orange-600">$2,450</p>
-                <p className="text-xs text-green-600">+15%</p>
+                <p className="text-2xl font-bold text-orange-600">${todayRevenue.toFixed(2)}</p>
+                <p className="text-xs text-green-600">+{analytics.revenueGrowth}%</p>
               </div>
               <div className="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center">
                 <LayoutDashboard className="w-6 h-6 text-orange-600" />
@@ -83,9 +160,9 @@ const Dashboard: React.FC = () => {
           <CardContent className="p-6">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm text-gray-600 mb-1">Avg Delivery Time</p>
-                <p className="text-2xl font-bold text-purple-600">28 min</p>
-                <p className="text-xs text-red-600">-5%</p>
+                <p className="text-sm text-gray-600 mb-1">Avg Order Value</p>
+                <p className="text-2xl font-bold text-purple-600">${analytics.avgOrderValue.toFixed(2)}</p>
+                <p className="text-xs text-green-600">+{analytics.avgOrderValueGrowth}%</p>
               </div>
               <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center">
                 <PieChart className="w-6 h-6 text-purple-600" />
@@ -103,33 +180,44 @@ const Dashboard: React.FC = () => {
               <PieChart className="w-5 h-5 text-orange-500" />
               <span>Recent Orders</span>
             </CardTitle>
-            <Button variant="outline" size="sm">
+            <Button 
+              variant="outline" 
+              size="sm"
+              onClick={() => navigate('/orders')}
+              className="hover:bg-orange-50 hover:text-orange-600 transition-colors"
+            >
               View All
             </Button>
           </CardHeader>
           <CardContent>
-            <div className="space-y-4">
+            <div className="space-y-4 max-h-[500px] overflow-y-auto pr-2 custom-scrollbar">
               {recentOrders.map((order) => (
-                <div key={order.orderId} className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+                <motion.div
+                  key={order.orderId}
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.2 }}
+                  className="flex items-center justify-between p-3 bg-gray-50 dark:bg-gray-800 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
+                >
                   <div>
                     <p className="font-medium">{order.orderId}</p>
-                    <p className="text-sm text-gray-600">{order.customer}</p>
-                    <p className="text-xs text-gray-500">
+                    <p className="text-sm text-gray-600 dark:text-gray-400">{order.customer}</p>
+                    <p className="text-xs text-gray-500 dark:text-gray-500">
                       {new Date(order.orderDate).toLocaleTimeString()} ago
                     </p>
                   </div>
                   <div className="text-right">
                     <span className={`px-2 py-1 rounded-full text-xs font-medium ${
-                      order.status === 'Preparing' ? 'bg-yellow-100 text-yellow-800' :
-                      order.status === 'Delivered' ? 'bg-green-100 text-green-800' :
-                      order.status === 'Out for Delivery' ? 'bg-blue-100 text-blue-800' :
-                      'bg-gray-100 text-gray-800'
+                      order.status === 'Preparing' ? 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200' :
+                      order.status === 'Delivered' ? 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200' :
+                      order.status === 'Out for Delivery' ? 'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200' :
+                      'bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-200'
                     }`}>
                       {order.status}
                     </span>
                     <p className="text-sm font-semibold mt-1">${order.total}</p>
                   </div>
-                </div>
+                </motion.div>
               ))}
             </div>
           </CardContent>
@@ -147,16 +235,23 @@ const Dashboard: React.FC = () => {
                 {quickActions.map((action, index) => {
                   const Icon = action.icon;
                   return (
-                    <Button
+                    <motion.div
                       key={index}
-                      variant="ghost"
-                      className="w-full justify-start hover:bg-gray-50"
+                      whileHover={{ scale: 1.02 }}
+                      whileTap={{ scale: 0.98 }}
+                      transition={{ type: "spring", stiffness: 400, damping: 17 }}
                     >
-                      <div className={`w-8 h-8 ${action.color} rounded-lg flex items-center justify-center mr-3`}>
-                        <Icon className="w-4 h-4 text-white" />
-                      </div>
-                      {action.name}
-                    </Button>
+                      <Button
+                        variant="ghost"
+                        className="w-full justify-start hover:bg-gray-50 transition-colors duration-200"
+                        onClick={() => handleQuickAction(action.path)}
+                      >
+                        <div className={`w-8 h-8 ${action.color} rounded-lg flex items-center justify-center mr-3 transition-transform duration-200 group-hover:scale-110`}>
+                          <Icon className="w-4 h-4 text-white" />
+                        </div>
+                        {action.name}
+                      </Button>
+                    </motion.div>
                   );
                 })}
               </div>
@@ -175,9 +270,14 @@ const Dashboard: React.FC = () => {
               <div>
                 <div className="flex justify-between text-sm mb-1">
                   <span>Orders Completed</span>
-                  <span className="font-medium">42/45</span>
+                  <span className="font-medium">
+                    {orders.filter(o => o.status === 'Delivered').length}/{orders.length}
+                  </span>
                 </div>
-                <Progress value={93} className="h-2" />
+                <Progress 
+                  value={(orders.filter(o => o.status === 'Delivered').length / orders.length) * 100} 
+                  className="h-2" 
+                />
               </div>
               
               <div>
