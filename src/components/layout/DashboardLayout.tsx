@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { Outlet } from 'react-router-dom';
 import Sidebar from './Sidebar';
@@ -29,15 +28,20 @@ const DashboardLayout: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 flex">
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
       <Sidebar 
         isCollapsed={isCollapsed}
         onToggle={() => setIsCollapsed(!isCollapsed)}
         isDarkMode={isDarkMode}
         onThemeToggle={handleThemeToggle}
       />
-      
-      <div className="flex-1 flex flex-col min-h-screen">
+      <div
+        className={
+          isCollapsed
+            ? "flex-1 flex flex-col min-h-screen transition-all duration-300 ml-0"
+            : "flex-1 flex flex-col min-h-screen transition-all duration-300 ml-64"
+        }
+      >
         <main className="flex-1 p-6">
           <Outlet />
         </main>
