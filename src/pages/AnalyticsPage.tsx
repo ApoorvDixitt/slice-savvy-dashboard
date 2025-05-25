@@ -1,11 +1,10 @@
-
 import React, { useState } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, PieChart, Pie, Cell } from 'recharts';
 import mockData from '@/data/mockData.json';
-import { pie-chart, users, layout-dashboard } from 'lucide-react';
+import { PieChart as PieChartIcon, Users, LayoutDashboard, Pizza } from 'lucide-react';
 
 const AnalyticsPage: React.FC = () => {
   const [activeTab, setActiveTab] = useState('Overview');
@@ -60,7 +59,7 @@ const AnalyticsPage: React.FC = () => {
                 </p>
               </div>
               <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center">
-                <layout-dashboard className="w-6 h-6 text-green-600" />
+                <LayoutDashboard className="w-6 h-6 text-green-600" />
               </div>
             </div>
           </CardContent>
@@ -77,7 +76,7 @@ const AnalyticsPage: React.FC = () => {
                 </p>
               </div>
               <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
-                <pie-chart className="w-6 h-6 text-blue-600" />
+                <PieChartIcon className="w-6 h-6 text-blue-600" />
               </div>
             </div>
           </CardContent>
@@ -94,7 +93,7 @@ const AnalyticsPage: React.FC = () => {
                 </p>
               </div>
               <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center">
-                <users className="w-6 h-6 text-purple-600" />
+                <Users className="w-6 h-6 text-purple-600" />
               </div>
             </div>
           </CardContent>
@@ -111,7 +110,7 @@ const AnalyticsPage: React.FC = () => {
                 </p>
               </div>
               <div className="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center">
-                <pie-chart className="w-6 h-6 text-orange-600" />
+                <PieChartIcon className="w-6 h-6 text-orange-600" />
               </div>
             </div>
           </CardContent>
@@ -139,7 +138,7 @@ const AnalyticsPage: React.FC = () => {
         <Card>
           <CardHeader>
             <CardTitle className="flex items-center space-x-2">
-              <pie-chart className="w-5 h-5 text-orange-500" />
+              <PieChartIcon className="w-5 h-5 text-orange-500" />
               <span>Revenue Trend</span>
             </CardTitle>
             <p className="text-sm text-gray-600">Monthly revenue over the last 6 months</p>
@@ -167,7 +166,7 @@ const AnalyticsPage: React.FC = () => {
         <Card>
           <CardHeader>
             <CardTitle className="flex items-center space-x-2">
-              <pizza className="w-5 h-5 text-orange-500" />
+              <Pizza className="w-5 h-5 text-orange-500" />
               <span>Pizza Sales Distribution</span>
             </CardTitle>
             <p className="text-sm text-gray-600">Most popular pizza types</p>

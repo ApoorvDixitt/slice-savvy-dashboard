@@ -2,14 +2,14 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { 
-  layout-dashboard,
-  pie-chart,
-  pizza,
-  users,
-  menu,
-  log-out,
-  sun,
-  moon
+  LayoutDashboard,
+  PieChart,
+  Pizza,
+  Users,
+  Menu,
+  LogOut,
+  Sun,
+  Moon
 } from 'lucide-react';
 import { useAuth } from '@/contexts/AuthContext';
 import { Button } from '@/components/ui/button';
@@ -33,11 +33,11 @@ const Sidebar: React.FC<SidebarProps> = ({
   const location = useLocation();
 
   const navigation = [
-    { name: 'Dashboard', href: '/', icon: layout-dashboard },
-    { name: 'Pizza Orders', href: '/orders', icon: pie-chart },
-    { name: 'Analytics', href: '/analytics', icon: pie-chart },
-    { name: 'Menu Management', href: '/menu', icon: pizza },
-    { name: 'Customers', href: '/customers', icon: users },
+    { name: 'Dashboard', href: '/', icon: LayoutDashboard },
+    { name: 'Pizza Orders', href: '/orders', icon: PieChart },
+    { name: 'Analytics', href: '/analytics', icon: PieChart },
+    { name: 'Menu Management', href: '/menu', icon: Pizza },
+    { name: 'Customers', href: '/customers', icon: Users },
   ];
 
   return (
@@ -51,7 +51,7 @@ const Sidebar: React.FC<SidebarProps> = ({
           {!isCollapsed && (
             <div className="flex items-center space-x-2">
               <div className="w-8 h-8 bg-gradient-to-r from-orange-400 to-red-500 rounded-lg flex items-center justify-center">
-                <pizza className="w-5 h-5 text-white" />
+                <Pizza className="w-5 h-5 text-white" />
               </div>
               <span className="font-bold text-xl text-gray-800 dark:text-white">
                 Pizza Dashboard
@@ -64,7 +64,7 @@ const Sidebar: React.FC<SidebarProps> = ({
             onClick={onToggle}
             className="p-2"
           >
-            <menu className="w-4 h-4" />
+            <Menu className="w-4 h-4" />
           </Button>
         </div>
       </div>
@@ -105,7 +105,7 @@ const Sidebar: React.FC<SidebarProps> = ({
             isCollapsed && "justify-center"
           )}
         >
-          {isDarkMode ? <sun className="w-4 h-4" /> : <moon className="w-4 h-4" />}
+          {isDarkMode ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
           {!isCollapsed && <span className="ml-2">
             {isDarkMode ? 'Light Mode' : 'Dark Mode'}
           </span>}
@@ -144,7 +144,7 @@ const Sidebar: React.FC<SidebarProps> = ({
             isCollapsed ? "justify-center" : "justify-start"
           )}
         >
-          <log-out className="w-4 h-4" />
+          <LogOut className="w-4 h-4" />
           {!isCollapsed && <span className="ml-2">Sign Out</span>}
         </Button>
       </div>

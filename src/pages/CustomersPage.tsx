@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -6,7 +5,7 @@ import { Input } from '@/components/ui/input';
 import { Badge } from '@/components/ui/badge';
 import { Avatar, AvatarFallback } from '@/components/ui/avatar';
 import mockData from '@/data/mockData.json';
-import { users, layout-dashboard, pie-chart } from 'lucide-react';
+import { Users, LayoutDashboard, PieChart } from 'lucide-react';
 
 const CustomersPage: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState('');
@@ -62,7 +61,7 @@ const CustomersPage: React.FC = () => {
                 <p className="text-xs text-blue-600">4 new this month</p>
               </div>
               <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
-                <users className="w-6 h-6 text-blue-600" />
+                <Users className="w-6 h-6 text-blue-600" />
               </div>
             </div>
           </CardContent>
@@ -77,7 +76,7 @@ const CustomersPage: React.FC = () => {
                 <p className="text-xs text-green-600">Per customer order</p>
               </div>
               <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center">
-                <pie-chart className="w-6 h-6 text-green-600" />
+                <PieChart className="w-6 h-6 text-green-600" />
               </div>
             </div>
           </CardContent>
@@ -92,7 +91,7 @@ const CustomersPage: React.FC = () => {
                 <p className="text-xs text-orange-600">Total lifetime value</p>
               </div>
               <div className="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center">
-                <layout-dashboard className="w-6 h-6 text-orange-600" />
+                <LayoutDashboard className="w-6 h-6 text-orange-600" />
               </div>
             </div>
           </CardContent>
@@ -107,7 +106,7 @@ const CustomersPage: React.FC = () => {
                 <p className="text-xs text-purple-600">Silver+ tier customers</p>
               </div>
               <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center">
-                <users className="w-6 h-6 text-purple-600" />
+                <Users className="w-6 h-6 text-purple-600" />
               </div>
             </div>
           </CardContent>

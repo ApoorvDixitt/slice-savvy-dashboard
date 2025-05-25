@@ -1,11 +1,10 @@
-
 import React from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Progress } from '@/components/ui/progress';
 import { useAuth } from '@/contexts/AuthContext';
 import mockData from '@/data/mockData.json';
-import { pie-chart, users, layout-dashboard } from 'lucide-react';
+import { PieChart, Users, LayoutDashboard, Pizza } from 'lucide-react';
 
 const Dashboard: React.FC = () => {
   const { user } = useAuth();
@@ -14,10 +13,10 @@ const Dashboard: React.FC = () => {
   const recentOrders = orders.slice(0, 4);
 
   const quickActions = [
-    { name: 'View All Orders', icon: pie-chart, color: 'bg-blue-500' },
-    { name: 'Manage Menu', icon: pizza, color: 'bg-green-500' },
-    { name: 'View Analytics', icon: pie-chart, color: 'bg-orange-500' },
-    { name: 'Customer List', icon: users, color: 'bg-purple-500' },
+    { name: 'View All Orders', icon: PieChart, color: 'bg-blue-500' },
+    { name: 'Manage Menu', icon: Pizza, color: 'bg-green-500' },
+    { name: 'View Analytics', icon: PieChart, color: 'bg-orange-500' },
+    { name: 'Customer List', icon: Users, color: 'bg-purple-500' },
   ];
 
   return (
@@ -44,7 +43,7 @@ const Dashboard: React.FC = () => {
                 <p className="text-xs text-green-600">+12%</p>
               </div>
               <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
-                <pie-chart className="w-6 h-6 text-blue-600" />
+                <PieChart className="w-6 h-6 text-blue-600" />
               </div>
             </div>
           </CardContent>
@@ -59,7 +58,7 @@ const Dashboard: React.FC = () => {
                 <p className="text-xs text-green-600">+8%</p>
               </div>
               <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center">
-                <users className="w-6 h-6 text-green-600" />
+                <Users className="w-6 h-6 text-green-600" />
               </div>
             </div>
           </CardContent>
@@ -74,7 +73,7 @@ const Dashboard: React.FC = () => {
                 <p className="text-xs text-green-600">+15%</p>
               </div>
               <div className="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center">
-                <layout-dashboard className="w-6 h-6 text-orange-600" />
+                <LayoutDashboard className="w-6 h-6 text-orange-600" />
               </div>
             </div>
           </CardContent>
@@ -89,7 +88,7 @@ const Dashboard: React.FC = () => {
                 <p className="text-xs text-red-600">-5%</p>
               </div>
               <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center">
-                <pie-chart className="w-6 h-6 text-purple-600" />
+                <PieChart className="w-6 h-6 text-purple-600" />
               </div>
             </div>
           </CardContent>
@@ -101,7 +100,7 @@ const Dashboard: React.FC = () => {
         <Card className="lg:col-span-2">
           <CardHeader className="flex flex-row items-center justify-between">
             <CardTitle className="flex items-center space-x-2">
-              <pie-chart className="w-5 h-5 text-orange-500" />
+              <PieChart className="w-5 h-5 text-orange-500" />
               <span>Recent Orders</span>
             </CardTitle>
             <Button variant="outline" size="sm">
@@ -168,7 +167,7 @@ const Dashboard: React.FC = () => {
           <Card>
             <CardHeader>
               <CardTitle className="flex items-center space-x-2">
-                <pie-chart className="w-5 h-5 text-green-500" />
+                <PieChart className="w-5 h-5 text-green-500" />
                 <span>Today's Performance</span>
               </CardTitle>
             </CardHeader>
