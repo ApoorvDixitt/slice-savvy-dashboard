@@ -104,6 +104,40 @@ const MotionCardHeader = motion(CardHeader);
 const MotionCardTitle = motion(CardTitle);
 
 function OverviewTab({ analytics, orders, customers, monthlyData, pieData, COLORS, avgOrderValue, totalRevenue, totalOrders, activeCustomers }: OverviewTabProps) {
+  const [isLoading, setIsLoading] = React.useState(true);
+
+  React.useEffect(() => {
+    // Simulate data loading
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 1000);
+    return () => clearTimeout(timer);
+  }, []);
+
+  if (isLoading) {
+    return (
+      <div className="space-y-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {[...Array(4)].map((_, i) => (
+            <div key={i} className="p-6 rounded-lg border bg-card animate-pulse">
+              <div className="h-4 w-1/2 bg-muted rounded mb-2" />
+              <div className="h-8 w-3/4 bg-muted rounded mb-2" />
+              <div className="h-3 w-1/3 bg-muted rounded" />
+            </div>
+          ))}
+        </div>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          {[...Array(2)].map((_, i) => (
+            <div key={i} className="p-6 rounded-lg border bg-card animate-pulse">
+              <div className="h-6 w-1/3 bg-muted rounded mb-4" />
+              <div className="h-[300px] w-full bg-muted rounded" />
+            </div>
+          ))}
+        </div>
+      </div>
+    );
+  }
+
   return (
     <motion.div
       variants={pageVariants}
@@ -111,146 +145,167 @@ function OverviewTab({ analytics, orders, customers, monthlyData, pieData, COLOR
       animate="animate"
       exit="exit"
       transition={{ duration: 0.3 }}
+      className="space-y-6"
     >
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
         <MotionCard 
-          className="border-green-200"
+          className="border-green-200 hover:shadow-lg transition-shadow duration-200"
           variants={cardVariants}
           whileHover="hover"
         >
-          <MotionCardContent className="p-6">
+          <MotionCardContent className="p-4 sm:p-6">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm text-gray-600 mb-1">Total Revenue</p>
-                <p className="text-2xl font-bold text-gray-900 dark:text-white">${totalRevenue.toFixed(2)}</p>
+                <p className="text-sm text-gray-600 dark:text-gray-400 mb-1">Total Revenue</p>
+                <p className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white">${totalRevenue.toFixed(2)}</p>
                 <p className="text-xs text-green-600 flex items-center">
                   <span className="mr-1">↗</span> +{analytics.revenueGrowth}% from last month
                 </p>
               </div>
-              <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center">
-                <LayoutDashboard className="w-6 h-6 text-green-600" />
+              <div className="w-10 h-10 sm:w-12 sm:h-12 bg-green-100 dark:bg-green-900 rounded-lg flex items-center justify-center">
+                <LayoutDashboard className="w-5 h-5 sm:w-6 sm:h-6 text-green-600 dark:text-green-400" />
               </div>
             </div>
           </MotionCardContent>
         </MotionCard>
         <MotionCard 
-          className="border-blue-200"
+          className="border-blue-200 hover:shadow-lg transition-shadow duration-200"
           variants={cardVariants}
           whileHover="hover"
         >
-          <MotionCardContent className="p-6">
+          <MotionCardContent className="p-4 sm:p-6">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm text-gray-600 mb-1">Total Orders</p>
-                <p className="text-2xl font-bold text-gray-900 dark:text-white">{totalOrders}</p>
+                <p className="text-sm text-gray-600 dark:text-gray-400 mb-1">Total Orders</p>
+                <p className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white">{totalOrders}</p>
                 <p className="text-xs text-green-600 flex items-center">
                   <span className="mr-1">↗</span> +{analytics.ordersGrowth}% from last month
                 </p>
               </div>
-              <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
-                <PieChartIcon className="w-6 h-6 text-blue-600" />
+              <div className="w-10 h-10 sm:w-12 sm:h-12 bg-blue-100 dark:bg-blue-900 rounded-lg flex items-center justify-center">
+                <PieChartIcon className="w-5 h-5 sm:w-6 sm:h-6 text-blue-600 dark:text-blue-400" />
               </div>
             </div>
           </MotionCardContent>
         </MotionCard>
         <MotionCard 
-          className="border-purple-200"
+          className="border-purple-200 hover:shadow-lg transition-shadow duration-200"
           variants={cardVariants}
           whileHover="hover"
         >
-          <MotionCardContent className="p-6">
+          <MotionCardContent className="p-4 sm:p-6">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm text-gray-600 mb-1">Active Customers</p>
-                <p className="text-2xl font-bold text-gray-900 dark:text-white">{activeCustomers}</p>
+                <p className="text-sm text-gray-600 dark:text-gray-400 mb-1">Active Customers</p>
+                <p className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white">{activeCustomers}</p>
                 <p className="text-xs text-red-600 flex items-center">
                   <span className="mr-1">↘</span> {analytics.customersGrowth}% from last month
                 </p>
               </div>
-              <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center">
-                <Users className="w-6 h-6 text-purple-600" />
+              <div className="w-10 h-10 sm:w-12 sm:h-12 bg-purple-100 dark:bg-purple-900 rounded-lg flex items-center justify-center">
+                <Users className="w-5 h-5 sm:w-6 sm:h-6 text-purple-600 dark:text-purple-400" />
               </div>
             </div>
           </MotionCardContent>
         </MotionCard>
         <MotionCard 
-          className="border-orange-200"
+          className="border-orange-200 hover:shadow-lg transition-shadow duration-200"
           variants={cardVariants}
           whileHover="hover"
         >
-          <MotionCardContent className="p-6">
+          <MotionCardContent className="p-4 sm:p-6">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm text-gray-600 mb-1">Avg Order Value</p>
-                <p className="text-2xl font-bold text-gray-900 dark:text-white">${avgOrderValue.toFixed(2)}</p>
+                <p className="text-sm text-gray-600 dark:text-gray-400 mb-1">Avg Order Value</p>
+                <p className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white">${avgOrderValue.toFixed(2)}</p>
                 <p className="text-xs text-green-600 flex items-center">
                   <span className="mr-1">↗</span> +{analytics.avgOrderValueGrowth}% from last month
                 </p>
               </div>
-              <div className="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center">
-                <PieChartIcon className="w-6 h-6 text-orange-600" />
+              <div className="w-10 h-10 sm:w-12 sm:h-12 bg-orange-100 dark:bg-orange-900 rounded-lg flex items-center justify-center">
+                <PieChartIcon className="w-5 h-5 sm:w-6 sm:h-6 text-orange-600 dark:text-orange-400" />
               </div>
             </div>
           </MotionCardContent>
         </MotionCard>
       </div>
-      {/* Charts */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mt-6">
-        {/* Revenue Trend */}
-        <MotionCard>
+
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6">
+        <MotionCard className="hover:shadow-lg transition-shadow duration-200">
           <MotionCardHeader>
-            <MotionCardTitle className="flex items-center space-x-2">
-              <PieChartIcon className="w-5 h-5 text-orange-500" />
+            <MotionCardTitle className="flex items-center space-x-2 text-base sm:text-lg">
+              <PieChartIcon className="w-4 h-4 sm:w-5 sm:h-5 text-orange-500" />
               <span>Revenue Trend</span>
             </MotionCardTitle>
-            <p className="text-sm text-gray-600">Monthly revenue over the last 6 months</p>
+            <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-400">Monthly revenue over the last 6 months</p>
           </MotionCardHeader>
           <MotionCardContent>
-            <ResponsiveContainer width="100%" height={300}>
-              <LineChart data={monthlyData}>
-                <CartesianGrid strokeDasharray="3 3" />
-                <XAxis dataKey="month" />
-                <YAxis />
-                <Tooltip formatter={(value) => [`$${value}`, 'Revenue']} />
-                <Line 
-                  type="monotone" 
-                  dataKey="revenue" 
-                  stroke="#FF8C00" 
-                  strokeWidth={3}
-                  dot={{ fill: '#FF8C00', strokeWidth: 2, r: 4 }}
-                />
-              </LineChart>
-            </ResponsiveContainer>
+            <div className="h-[250px] sm:h-[300px]">
+              <ResponsiveContainer width="100%" height="100%">
+                <LineChart data={monthlyData}>
+                  <CartesianGrid strokeDasharray="3 3" className="stroke-gray-200 dark:stroke-gray-700" />
+                  <XAxis 
+                    dataKey="month" 
+                    tick={{ fontSize: 12 }}
+                    className="text-xs sm:text-sm"
+                  />
+                  <YAxis 
+                    tick={{ fontSize: 12 }}
+                    className="text-xs sm:text-sm"
+                  />
+                  <Tooltip 
+                    content={({ active, payload, label }) => {
+                      if (!active || !payload || !payload.length) return null;
+                      return (
+                        <div className="bg-white dark:bg-gray-800 p-2 rounded shadow text-xs sm:text-sm">
+                          <p className="font-medium">{label}</p>
+                          <p className="text-orange-500">${payload[0].value}</p>
+                        </div>
+                      );
+                    }}
+                  />
+                  <Line 
+                    type="monotone" 
+                    dataKey="revenue" 
+                    stroke="#FF8C00" 
+                    strokeWidth={2}
+                    dot={{ fill: '#FF8C00', strokeWidth: 2, r: 3 }}
+                    activeDot={{ r: 5 }}
+                  />
+                </LineChart>
+              </ResponsiveContainer>
+            </div>
           </MotionCardContent>
         </MotionCard>
-        {/* Pizza Sales Distribution */}
-        <MotionCard>
+        <MotionCard className="hover:shadow-lg transition-shadow duration-200">
           <MotionCardHeader>
-            <MotionCardTitle className="flex items-center space-x-2">
-              <Pizza className="w-5 h-5 text-orange-500" />
+            <MotionCardTitle className="flex items-center space-x-2 text-base sm:text-lg">
+              <Pizza className="w-4 h-4 sm:w-5 sm:h-5 text-orange-500" />
               <span>Pizza Sales Distribution</span>
             </MotionCardTitle>
-            <p className="text-sm text-gray-600">Most popular pizza types</p>
+            <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-400">Most popular pizza types</p>
           </MotionCardHeader>
           <MotionCardContent>
-            <ResponsiveContainer width="100%" height={300}>
-              <PieChart>
-                <Pie
-                  data={pieData}
-                  cx="50%"
-                  cy="50%"
-                  innerRadius={60}
-                  outerRadius={120}
-                  paddingAngle={5}
-                  dataKey="value"
-                >
-                  {pieData.map((entry, index) => (
-                    <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
-                  ))}
-                </Pie>
-                <Tooltip formatter={(value) => [`${value}%`, 'Sales']} />
-              </PieChart>
-            </ResponsiveContainer>
+            <div className="h-[250px] sm:h-[300px]">
+              <ResponsiveContainer width="100%" height="100%">
+                <PieChart>
+                  <Pie
+                    data={pieData}
+                    cx="50%"
+                    cy="50%"
+                    innerRadius={60}
+                    outerRadius={120}
+                    paddingAngle={5}
+                    dataKey="value"
+                  >
+                    {pieData.map((entry, index) => (
+                      <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+                    ))}
+                  </Pie>
+                  <Tooltip formatter={(value) => [`${value}%`, 'Sales']} />
+                </PieChart>
+              </ResponsiveContainer>
+            </div>
             <div className="flex flex-wrap justify-center gap-2 mt-4">
               {pieData.map((entry, index) => (
                 <Badge
@@ -497,9 +552,9 @@ function ProductsTab({ orders, menuItems, dateRange }: ProductsTabProps) {
           <CardTitle>All Products Performance</CardTitle>
         </CardHeader>
         <CardContent>
-          <div className="overflow-x-auto" style={{ maxHeight: 360 }}>
-            <table className="min-w-full text-sm sticky-header" style={{ borderCollapse: 'separate', borderSpacing: 0 }}>
-              <thead className="sticky top-0 z-10 bg-gray-100 dark:bg-gray-800">
+          <div className="overflow-x-auto relative" style={{ maxHeight: 'calc(100vh - 300px)' }}>
+            <table className="min-w-full text-sm" style={{ borderCollapse: 'separate', borderSpacing: 0, position: 'relative' }}>
+              <thead className="sticky top-0 z-10 bg-gray-100 dark:bg-gray-800 shadow-sm">
                 <tr>
                   <th className="px-4 py-2 text-left sticky left-0 bg-gray-100 dark:bg-gray-800 cursor-pointer select-none" onClick={() => handleSort('name')}>
                     Product {sortArrow('name')}
@@ -627,9 +682,9 @@ function CustomersTab({ customers, orders, dateRange }: CustomersTabProps) {
       >
         <CardHeader><CardTitle>Top Customers</CardTitle></CardHeader>
         <CardContent>
-          <div className="overflow-x-auto" style={{ maxHeight: 360 }}>
-            <table className="min-w-full text-sm sticky-header" style={{ borderCollapse: 'separate', borderSpacing: 0 }}>
-              <thead className="sticky top-0 z-10 bg-gray-100 dark:bg-gray-800">
+          <div className="overflow-x-auto relative" style={{ maxHeight: 'calc(100vh - 300px)' }}>
+            <table className="min-w-full text-sm" style={{ borderCollapse: 'separate', borderSpacing: 0, position: 'relative' }}>
+              <thead className="sticky top-0 z-10 bg-gray-100 dark:bg-gray-800 shadow-sm">
                 <tr>
                   <th className="px-4 py-2 text-left cursor-pointer select-none" onClick={() => handleSort('name')}>Name {sortArrow('name')}</th>
                   <th className="px-4 py-2 text-left cursor-pointer select-none" onClick={() => handleSort('email')}>Email {sortArrow('email')}</th>
@@ -792,7 +847,7 @@ const AnalyticsPage: React.FC = () => {
 
   return (
     <motion.div 
-      className="space-y-6"
+      className="space-y-6 h-[calc(100vh-4rem)] overflow-hidden"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.5 }}
@@ -885,6 +940,7 @@ const AnalyticsPage: React.FC = () => {
           animate="animate"
           exit="exit"
           transition={{ duration: 0.3 }}
+          className="h-[calc(100vh-12rem)] overflow-y-auto pr-2"
         >
           {renderTabContent()}
         </motion.div>

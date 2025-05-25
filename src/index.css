@@ -52,41 +52,60 @@
   }
 
   .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
+    /* Base colors - Royal Charcoal Black */
+    --background: 0 0% 11%;
+    --foreground: 39 55% 91%;
 
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
+    /* Card and surface colors - Dark Espresso */
+    --card: 10 8% 16%;
+    --card-foreground: 39 55% 91%;
 
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
+    /* Popover colors - Slightly elevated Dark Espresso */
+    --popover: 10 8% 18%;
+    --popover-foreground: 39 55% 91%;
 
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
+    /* Primary colors - Rustic Tomato Red for main actions */
+    --primary: 12 68% 49%;
+    --primary-foreground: 39 55% 91%;
 
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
+    /* Secondary colors - Muted Sandstone for subtle elements */
+    --secondary: 24 25% 73%;
+    --secondary-foreground: 0 0% 11%;
 
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
+    /* Muted colors - Secondary text and subtle elements */
+    --muted: 24 25% 73%;
+    --muted-foreground: 24 25% 73%;
 
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
+    /* Accent colors - Burnished Gold for highlights */
+    --accent: 45 65% 52%;
+    --accent-foreground: 0 0% 11%;
 
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
+    /* Success colors - Olive Green for fresh ingredients */
+    --success: 95 22% 43%;
+    --success-foreground: 39 55% 91%;
 
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    /* Destructive colors - Sienna Red for errors */
+    --destructive: 8 60% 41%;
+    --destructive-foreground: 39 55% 91%;
+
+    /* Border and input colors - Deep Cocoa */
+    --border: 10 12% 20%;
+    --input: 10 12% 20%;
+    --ring: 12 68% 49%;
+
+    /* Sidebar colors - Consistent with main theme */
+    --sidebar-background: 0 0% 11%;
+    --sidebar-foreground: 39 55% 91%;
+    --sidebar-primary: 12 68% 49%;
+    --sidebar-primary-foreground: 39 55% 91%;
+    --sidebar-accent: 45 65% 52%;
+    --sidebar-accent-foreground: 0 0% 11%;
+    --sidebar-border: 10 12% 20%;
+    --sidebar-ring: 12 68% 49%;
+
+    /* Hover states */
+    --hover: 8 60% 41%;
+    --hover-foreground: 39 55% 91%;
   }
 }
 

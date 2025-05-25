@@ -24,6 +24,14 @@ const SIDEBAR_WIDTH_MOBILE = "18rem"
 const SIDEBAR_WIDTH_ICON = "3rem"
 const SIDEBAR_KEYBOARD_SHORTCUT = "b"
 
+const SIDEBAR_BREAKPOINTS = {
+  sm: '640px',
+  md: '768px',
+  lg: '1024px',
+  xl: '1280px',
+  '2xl': '1536px'
+}
+
 type SidebarContext = {
   state: "expanded" | "collapsed"
   open: boolean
@@ -160,6 +168,7 @@ const Sidebar = React.forwardRef<
     side?: "left" | "right"
     variant?: "sidebar" | "floating" | "inset"
     collapsible?: "offcanvas" | "icon" | "none"
+    isLoading?: boolean
   }
 >(
   (
@@ -167,6 +176,7 @@ const Sidebar = React.forwardRef<
       side = "left",
       variant = "sidebar",
       collapsible = "offcanvas",
+      isLoading = false,
       className,
       children,
       ...props
@@ -174,6 +184,19 @@ const Sidebar = React.forwardRef<
     ref
   ) => {
     const { isMobile, state, openMobile, setOpenMobile } = useSidebar()
+
+    if (isLoading) {
+      return (
+        <div className="flex h-full w-[--sidebar-width] flex-col bg-sidebar p-4 animate-pulse">
+          <div className="h-8 w-3/4 bg-sidebar-border rounded mb-4" />
+          <div className="space-y-3">
+            {[...Array(5)].map((_, i) => (
+              <div key={i} className="h-10 bg-sidebar-border rounded" />
+            ))}
+          </div>
+        </div>
+      )
+    }
 
     if (collapsible === "none") {
       return (
