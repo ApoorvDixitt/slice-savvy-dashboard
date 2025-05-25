@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { 
@@ -38,6 +39,19 @@ const Sidebar: React.FC<SidebarProps> = ({
     { name: 'Menu Management', href: '/menu', icon: Pizza },
     { name: 'Customers', href: '/customers', icon: Users },
   ];
+
+  const handleLogout = async () => {
+    try {
+      await logout();
+    } catch (error) {
+      console.error('Logout failed:', error);
+    }
+  };
+
+  // Get user display name and avatar from Supabase user metadata
+  const displayName = user?.user_metadata?.full_name || user?.email || 'User';
+  const avatarUrl = user?.user_metadata?.avatar_url || user?.user_metadata?.picture;
+  const userEmail = user?.email || '';
 
   return (
     <>
@@ -101,17 +115,17 @@ const Sidebar: React.FC<SidebarProps> = ({
               {/* User Info */}
               <div className="flex items-center space-x-3">
                 <Avatar className="w-8 h-8">
-                  <AvatarImage src={user?.avatar} />
+                  <AvatarImage src={avatarUrl} />
                   <AvatarFallback className="bg-gradient-to-r from-orange-400 to-red-500 text-white">
-                    {user?.name?.split(' ').map(n => n[0]).join('') || 'U'}
+                    {displayName.split(' ').map(n => n[0]).join('').toUpperCase() || 'U'}
                   </AvatarFallback>
                 </Avatar>
                 <div className="flex-1 min-w-0">
                   <p className="text-sm font-medium text-gray-900 dark:text-white truncate">
-                    {user?.name}
+                    {displayName}
                   </p>
                   <p className="text-xs text-gray-500 dark:text-gray-400 truncate">
-                    {user?.email}
+                    {userEmail}
                   </p>
                 </div>
               </div>
@@ -130,7 +144,7 @@ const Sidebar: React.FC<SidebarProps> = ({
                 <Button
                   variant="ghost"
                   size="sm"
-                  onClick={logout}
+                  onClick={handleLogout}
                   className="w-full text-red-600 hover:text-red-700 hover:bg-red-50 dark:hover:bg-red-900/20 justify-start"
                 >
                   <LogOut className="w-4 h-4" />
