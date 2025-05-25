@@ -1,0 +1,173 @@
+
+{
+  "customers": [
+    {
+      "id": "CUST001",
+      "name": "John Smith",
+      "email": "john.smith@email.com",
+      "phone": "+1 (555) 123-4567",
+      "totalOrders": 47,
+      "totalRevenue": 1247.50,
+      "membershipTier": "Gold",
+      "loyaltyPoints": 1247,
+      "joinDate": "2023-08-15",
+      "lastOrderDate": "2024-01-23"
+    },
+    {
+      "id": "CUST002",
+      "name": "Sarah Johnson",
+      "email": "sarah.j@email.com",
+      "phone": "+1 (555) 987-6543",
+      "totalOrders": 28,
+      "totalRevenue": 892.30,
+      "membershipTier": "Silver",
+      "loyaltyPoints": 892,
+      "joinDate": "2023-09-22",
+      "lastOrderDate": "2024-01-22"
+    },
+    {
+      "id": "CUST003",
+      "name": "Mike Davis",
+      "email": "mike.davis@email.com",
+      "phone": "+1 (555) 456-7890",
+      "totalOrders": 67,
+      "totalRevenue": 2156.80,
+      "membershipTier": "Platinum",
+      "loyaltyPoints": 2156,
+      "joinDate": "2023-06-10",
+      "lastOrderDate": "2024-01-24"
+    },
+    {
+      "id": "CUST004",
+      "name": "Emily Wilson",
+      "email": "emily.w@email.com",
+      "phone": "+1 (555) 321-0987",
+      "totalOrders": 15,
+      "totalRevenue": 425.75,
+      "membershipTier": "Bronze",
+      "loyaltyPoints": 425,
+      "joinDate": "2023-12-01",
+      "lastOrderDate": "2024-01-20"
+    },
+    {
+      "id": "CUST005",
+      "name": "Robert Taylor",
+      "email": "robert.t@email.com",
+      "phone": "+1 (555) 654-3210",
+      "totalOrders": 33,
+      "totalRevenue": 978.45,
+      "membershipTier": "Silver",
+      "loyaltyPoints": 978,
+      "joinDate": "2023-10-05",
+      "lastOrderDate": "2024-01-21"
+    }
+  ],
+  "orders": [
+    {
+      "orderId": "PZA010",
+      "customer": "Amanda White",
+      "customerEmail": "amanda.w@email.com",
+      "pizzaType": "Pepperoni",
+      "quantity": 1,
+      "total": 18.50,
+      "orderDate": "2024-01-24T18:00:00Z",
+      "status": "Preparing"
+    },
+    {
+      "orderId": "PZA009",
+      "customer": "Robert Taylor",
+      "customerEmail": "robert.t@email.com",
+      "pizzaType": "Margherita",
+      "quantity": 3,
+      "total": 37.47,
+      "orderDate": "2024-01-24T17:40:00Z",
+      "status": "Pending"
+    },
+    {
+      "orderId": "PZA008",
+      "customer": "Lisa Miller",
+      "customerEmail": "lisa.m@email.com",
+      "pizzaType": "Buffalo Chicken",
+      "quantity": 1,
+      "total": 22.99,
+      "orderDate": "2024-01-24T17:25:00Z",
+      "status": "Cancelled"
+    },
+    {
+      "orderId": "PZA007",
+      "customer": "Tom Anderson",
+      "customerEmail": "tom.a@email.com",
+      "pizzaType": "Four Cheese",
+      "quantity": 2,
+      "total": 32.00,
+      "orderDate": "2024-01-24T17:10:00Z",
+      "status": "Out for Delivery"
+    },
+    {
+      "orderId": "PZA006",
+      "customer": "Emily Davis",
+      "customerEmail": "emily.d@email.com",
+      "pizzaType": "BBQ Chicken",
+      "quantity": 1,
+      "total": 21.50,
+      "orderDate": "2024-01-24T16:35:00Z",
+      "status": "Delivered"
+    }
+  ],
+  "menuItems": [
+    {
+      "id": "PIZZA001",
+      "name": "Margherita Pizza",
+      "category": "Pizza",
+      "price": 16.99,
+      "description": "Classic pizza with fresh mozzarella, tomato sauce, and basil",
+      "ingredients": ["Mozzarella", "Tomato Sauce", "Fresh Basil", "Olive Oil"],
+      "isPopular": true
+    },
+    {
+      "id": "PIZZA002",
+      "name": "Pepperoni Pizza",
+      "category": "Pizza",
+      "price": 18.99,
+      "description": "Traditional pepperoni pizza with mozzarella and tomato sauce",
+      "ingredients": ["Pepperoni", "Mozzarella", "Tomato Sauce"],
+      "isPopular": true
+    },
+    {
+      "id": "SALAD001",
+      "name": "Caesar Salad",
+      "category": "Salads",
+      "price": 12.99,
+      "description": "Fresh romaine lettuce with parmesan cheese and croutons",
+      "ingredients": ["Romaine Lettuce", "Parmesan", "Croutons", "Caesar Dressing"],
+      "isPopular": false
+    },
+    {
+      "id": "APP001",
+      "name": "Garlic Bread",
+      "category": "Appetizers",
+      "price": 7.99,
+      "description": "Toasted bread with garlic butter and herbs",
+      "ingredients": ["Bread", "Garlic", "Butter", "Herbs"],
+      "isPopular": false
+    }
+  ],
+  "analytics": {
+    "totalRevenue": 42350,
+    "totalOrders": 1445,
+    "activeCustomers": 892,
+    "avgOrderValue": 29.31,
+    "revenueGrowth": 12.5,
+    "ordersGrowth": 8.2,
+    "customersGrowth": -2.1,
+    "avgOrderValueGrowth": 5.7,
+    "monthlyRevenue": [4000, 5500, 7200, 6800, 8900, 9200],
+    "pizzaSalesDistribution": {
+      "Pepperoni": 35,
+      "Margherita": 25,
+      "Hawaiian": 15,
+      "BBQ Chicken": 12,
+      "Four Cheese": 13
+    }
+  }
+}
