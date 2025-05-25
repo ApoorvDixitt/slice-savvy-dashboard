@@ -3,7 +3,7 @@ import React from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { useAuth } from '@/contexts/AuthContext';
-import { pizza } from 'lucide-react';
+import { Pizza } from 'lucide-react';
 
 const LoginPage: React.FC = () => {
   const { login } = useAuth();
@@ -38,7 +38,7 @@ const LoginPage: React.FC = () => {
       <Card className="w-full max-w-md relative z-10 bg-white/95 backdrop-blur-sm shadow-2xl">
         <CardHeader className="text-center space-y-4">
           <div className="mx-auto w-20 h-20 bg-gradient-to-r from-orange-400 to-red-500 rounded-full flex items-center justify-center mb-4">
-            <pizza className="w-10 h-10 text-white" />
+            <Pizza className="w-10 h-10 text-white" />
           </div>
           <CardTitle className="text-3xl font-bold bg-gradient-to-r from-orange-600 to-red-600 bg-clip-text text-transparent">
             Pizza Dashboard

@@ -6,7 +6,7 @@ import { Input } from '@/components/ui/input';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Badge } from '@/components/ui/badge';
 import mockData from '@/data/mockData.json';
-import { pizza } from 'lucide-react';
+import { Pizza } from 'lucide-react';
 
 const OrdersPage: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState('');
@@ -45,7 +45,7 @@ const OrdersPage: React.FC = () => {
         <CardHeader>
           <CardTitle className="flex items-center justify-between">
             <div className="flex items-center space-x-2">
-              <pizza className="w-5 h-5 text-orange-500" />
+              <Pizza className="w-5 h-5 text-orange-500" />
               <span>Pizza Orders</span>
             </div>
             <div className="flex items-center space-x-2">

@@ -6,7 +6,7 @@ import { Input } from '@/components/ui/input';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Badge } from '@/components/ui/badge';
 import mockData from '@/data/mockData.json';
-import { pizza } from 'lucide-react';
+import { Pizza } from 'lucide-react';
 
 const MenuPage: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState('');
